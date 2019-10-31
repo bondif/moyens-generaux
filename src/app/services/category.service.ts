@@ -7,7 +7,7 @@ import {Category} from '../entities/Category';
 })
 export class CategoryService {
 
-  BASE_URL: string = "localhost:8080/api";
+  BASE_URL: string = "localhost:8080/api/admin";
 
   constructor(private http: HttpClient) {
   }

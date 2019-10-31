@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FunctionService} from '../../../services/function.service';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  selector: 'functions-app-index',
+  templateUrl: './functions-index.component.html',
+  styleUrls: ['./functions-index.component.css']
 })
 export class FunctionsIndexComponent implements OnInit {
 

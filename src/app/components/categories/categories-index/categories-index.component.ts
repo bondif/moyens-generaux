@@ -3,7 +3,7 @@ import {CategoryService} from '../../../services/category.service';
 import {Category} from '../../../entities/Category';
 
 @Component({
-  selector: 'app-index',
+  selector: 'categories-app-index',
   templateUrl: './categories-index.component.html',
   styleUrls: ['./categories-index.component.css']
 })
