@@ -7,13 +7,13 @@ import {Category} from '../entities/Category';
 })
 export class CategoryService {
 
-  BASE_URL: string = "localhost:8080/api/admin";
+  BASE_URL: string = "http://localhost:8080/api/admin";
 
   constructor(private http: HttpClient) {
   }
 
   getAll() {
-    return this.http.get(this.BASE_URL + '/categories')
+    return this.http.get(this.BASE_URL + '/categories/')
       .toPromise()
       .then(res => <Category[]> res)
       .then(data => { return data; });

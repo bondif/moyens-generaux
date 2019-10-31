@@ -11,7 +11,7 @@ export class FunctionService {
   }
 
   getAll() {
-    return this.http.get(this.BASE_URL + '/functions')
+    return this.http.get(this.BASE_URL + '/functions/')
       .toPromise()
       .then(res => <Function[]> res)
       .then(data => { return data; });
