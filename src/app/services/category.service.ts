@@ -18,4 +18,28 @@ export class CategoryService {
       .then(res => <Category[]> res)
       .then(data => { return data; });
   }
+  getOne(id) {
+    return this.http.get(this.BASE_URL + '/categories/'+id)
+      .toPromise()
+      .then(res => <Category> res)
+      .then(data => { return data; });
+  }
+
+  save(name) {
+    return this.http.post(this.BASE_URL + '/categories/',name)
+      .toPromise()
+      .then(data => { return data; });
+  }
+  update(category:Category) {
+    return this.http.put(this.BASE_URL + '/categories/'+category.id,category.name)
+      .toPromise()
+      .then(data => { return data; });
+  }
+
+  delete(id) {
+    return this.http.delete(this.BASE_URL + '/categories/'+id)
+      .toPromise()
+      .then(data => { return data; });
+  }
+
 }

@@ -3,12 +3,20 @@
     <tr>
       <th>#</th>
       <th>Name</th>
+      <th>Editer</th>
+      <th>Supprimer</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-function>
     <tr>
       <td>{{function.id}}</td>
       <td>{{function.name}}</td>
+      <td>
+        <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning" (click)="edit(function.id)"></button>
+      </td>
+      <td>
+        <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger" (click)="delete(function.id)"></button>
+      </td>
     </tr>
   </ng-template>
 </p-table>

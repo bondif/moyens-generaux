@@ -17,4 +17,11 @@ export class FunctionsIndexComponent implements OnInit {
     this.functionService.getAll().then(functions => this.functions = functions, err => console.log(err.message));
   }
 
+  edit(id: any) {
+    
+  }
+
+  delete(id: any) {
+    
+  }
 }

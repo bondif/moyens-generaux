@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class FunctionService {
-  BASE_URL: string = "localhost:8080/api/admin";
+  BASE_URL: string = "http://localhost:8080/api/admin";
 
   constructor(private http: HttpClient) {
   }

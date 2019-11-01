@@ -13,11 +13,23 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import {CategoriesIndexComponent} from './components/categories/categories-index/categories-index.component';
 import {FunctionsIndexComponent} from './components/functions/functions-index/functions-index.component';
+import {InputTextModule} from 'primeng/inputtext';
+import {CategoriesCreateComponent} from './components/categories/categories-create/categories-create.component';
+import {FormsModule} from '@angular/forms';
+import { CategoriesEditComponent } from './components/categories/categories-edit/categories-edit.component';
 
 const routes: Routes = [
   {
     path: 'admin/categories',
     component: CategoriesIndexComponent
+  },
+  {
+    path: 'admin/categories/create',
+    component: CategoriesCreateComponent
+  },
+  {
+    path: 'admin/categories/:id/edit',
+    component: CategoriesEditComponent
   },
   {
     path: 'admin/functions',
@@ -33,14 +45,18 @@ const routes: Routes = [
     ContainerComponent,
     CategoriesIndexComponent,
     FunctionsIndexComponent,
+    CategoriesCreateComponent,
+    CategoriesEditComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SidebarModule,
     ButtonModule,
+    FormsModule,
     TableModule,
     HttpClientModule,
+    InputTextModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
