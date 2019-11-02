@@ -29,7 +29,7 @@ export class CategoriesEditComponent implements OnInit {
   }
 
   update() {
-    this.categoryService.update(this.category).then(data => {
+    this.categoryService.update(this.category,this.category.id).then(data => {
       console.log(data);
       this.router.navigateByUrl("/admin/categories")
     }, err => console.log(err.message));

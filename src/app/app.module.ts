@@ -17,6 +17,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {CategoriesCreateComponent} from './components/categories/categories-create/categories-create.component';
 import {FormsModule} from '@angular/forms';
 import { CategoriesEditComponent } from './components/categories/categories-edit/categories-edit.component';
+import { FunctionsCreateComponent } from './components/functions/functions-create/functions-create.component';
+import { FunctionsEditComponent } from './components/functions/functions-edit/functions-edit.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,14 @@ const routes: Routes = [
     path: 'admin/functions',
     component: FunctionsIndexComponent
   },
+  {
+    path: 'admin/functions/create',
+    component: FunctionsCreateComponent
+  },
+  {
+    path: 'admin/functions/:id/edit',
+    component: FunctionsEditComponent
+  }
 ];
 
 @NgModule({
@@ -47,6 +57,8 @@ const routes: Routes = [
     FunctionsIndexComponent,
     CategoriesCreateComponent,
     CategoriesEditComponent,
+    FunctionsCreateComponent,
+    FunctionsEditComponent,
   ],
   imports: [
     BrowserModule,
