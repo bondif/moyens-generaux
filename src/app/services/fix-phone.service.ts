@@ -9,6 +9,6 @@ import {FixPhone} from '../entities/Fixphone';
 export class FixPhoneService extends GenericService<FixPhone> {
 
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:8080/api/admin/equipments/');
+    super(http, 'http://localhost:8080/api/admin/fix-phones/');
   }
 }

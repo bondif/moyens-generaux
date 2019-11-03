@@ -31,6 +31,7 @@ import { EquipmentsCreateComponent } from './components/equipments/equipments-cr
 import { EquipmentsEditComponent } from './components/equipments/equipments-edit/equipments-edit.component';
 import { EquipmentsIndexComponent } from './components/equipments/equipments-index/equipments-index.component';
 import { FixPhonesCreateComponent } from './components/fix-phones/fix-phones-create/fix-phones-create.component';
+import { ModemsCreateComponent } from './components/modems/modems-create/modems-create.component';
 
 const routes: Routes = [
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
   {
     path: 'admin/fix-phones/create',
     component: FixPhonesCreateComponent
+  },
+  {
+    path: 'admin/modems/create',
+    component: ModemsCreateComponent
   }
 ];
 
@@ -121,6 +126,7 @@ const routes: Routes = [
     EquipmentsEditComponent,
     EquipmentsIndexComponent,
     FixPhonesCreateComponent,
+    ModemsCreateComponent,
   ],
   imports: [
     BrowserModule,
