@@ -27,6 +27,10 @@ import { DepartmentsEditComponent } from './components/departments/departments-e
 import { DepartmentsCreateComponent } from './components/departments/departments-create/departments-create.component';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {PaginatorModule} from 'primeng/paginator';
+import { EquipmentsCreateComponent } from './components/equipments/equipments-create/equipments-create.component';
+import { EquipmentsEditComponent } from './components/equipments/equipments-edit/equipments-edit.component';
+import { EquipmentsIndexComponent } from './components/equipments/equipments-index/equipments-index.component';
+import { FixPhonesCreateComponent } from './components/fix-phones/fix-phones-create/fix-phones-create.component';
 
 const routes: Routes = [
   {
@@ -76,6 +80,22 @@ const routes: Routes = [
   {
     path: 'admin/employees/:id/edit',
     component: EmployeesEditComponent
+  },
+  {
+    path: 'admin/equipments',
+    component: EquipmentsIndexComponent
+  },
+  {
+    path: 'admin/equipments/create',
+    component: EquipmentsCreateComponent
+  },
+  {
+    path: 'admin/equipments/:id/edit',
+    component: EmployeesEditComponent
+  },
+  {
+    path: 'admin/fix-phones/create',
+    component: FixPhonesCreateComponent
   }
 ];
 
@@ -97,6 +117,10 @@ const routes: Routes = [
     DepartmentsIndexComponent,
     DepartmentsEditComponent,
     DepartmentsCreateComponent,
+    EquipmentsCreateComponent,
+    EquipmentsEditComponent,
+    EquipmentsIndexComponent,
+    FixPhonesCreateComponent,
   ],
   imports: [
     BrowserModule,
