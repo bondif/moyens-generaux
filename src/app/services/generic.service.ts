@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Employee} from '../entities/employee';
 
 
-export class GenericService<Entity> {
+export abstract class  GenericService<Entity> {
 
-  constructor(private http:HttpClient,private BASE_URL: string) { }
+  protected constructor(protected http:HttpClient, protected BASE_URL: string) { }
 
   getAll() {
     return this.http.get(this.BASE_URL)
@@ -12,7 +13,12 @@ export class GenericService<Entity> {
       .then(res => <Entity[]> res)
       .then(data => { return data; });
   }
-
+  getPage(page,size) {
+    return this.http.get(this.BASE_URL+"?page="+page+"&size="+size)
+      .toPromise()
+      .then(res => <any[]> res)
+      .then(data => { return data; });
+  }
   getOne(id) {
     return this.http.get(this.BASE_URL +id)
       .toPromise()

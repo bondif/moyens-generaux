@@ -19,6 +19,14 @@ import {FormsModule} from '@angular/forms';
 import { CategoriesEditComponent } from './components/categories/categories-edit/categories-edit.component';
 import { FunctionsCreateComponent } from './components/functions/functions-create/functions-create.component';
 import { FunctionsEditComponent } from './components/functions/functions-edit/functions-edit.component';
+import { EmployeesIndexComponent } from './components/employees/employees-index/employees-index.component';
+import { EmployeesEditComponent } from './components/employees/employees-edit/employees-edit.component';
+import { EmployeesCreateComponent } from './components/employees/employees-create/employees-create.component';
+import { DepartmentsIndexComponent } from './components/departments/departments-index/departments-index.component';
+import { DepartmentsEditComponent } from './components/departments/departments-edit/departments-edit.component';
+import { DepartmentsCreateComponent } from './components/departments/departments-create/departments-create.component';
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import {PaginatorModule} from 'primeng/paginator';
 
 const routes: Routes = [
   {
@@ -44,6 +52,30 @@ const routes: Routes = [
   {
     path: 'admin/functions/:id/edit',
     component: FunctionsEditComponent
+  },
+  {
+    path: 'admin/departments',
+    component: DepartmentsIndexComponent
+  },
+  {
+    path: 'admin/departments/create',
+    component: DepartmentsCreateComponent
+  },
+  {
+    path: 'admin/departments/:id/edit',
+    component: DepartmentsEditComponent
+  },
+  {
+    path: 'admin/employees',
+    component: EmployeesIndexComponent
+  },
+  {
+    path: 'admin/employees/create',
+    component: EmployeesCreateComponent
+  },
+  {
+    path: 'admin/employees/:id/edit',
+    component: EmployeesEditComponent
   }
 ];
 
@@ -59,6 +91,12 @@ const routes: Routes = [
     CategoriesEditComponent,
     FunctionsCreateComponent,
     FunctionsEditComponent,
+    EmployeesIndexComponent,
+    EmployeesEditComponent,
+    EmployeesCreateComponent,
+    DepartmentsIndexComponent,
+    DepartmentsEditComponent,
+    DepartmentsCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +106,8 @@ const routes: Routes = [
     FormsModule,
     TableModule,
     HttpClientModule,
+    AutoCompleteModule,
+    PaginatorModule,
     InputTextModule,
     RouterModule.forRoot(routes)
   ],
