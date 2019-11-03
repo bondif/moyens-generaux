@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Function} from '../../../entities/Function';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FunctionService} from '../../../services/function.service';
-import {dashCaseToCamelCase} from '@angular/compiler/src/util';
-import {error} from 'util';
 
 @Component({
   selector: 'app-functions-edit',
@@ -11,7 +9,7 @@ import {error} from 'util';
   styleUrls: ['./functions-edit.component.css']
 })
 export class FunctionsEditComponent implements OnInit {
-  function: Function={id: 0, name: ""};
+  function: Function = {id: 0, name: ''};
 
   constructor(private route: ActivatedRoute, private router: Router, private functionService: FunctionService) {
   }
@@ -29,7 +27,7 @@ export class FunctionsEditComponent implements OnInit {
   update() {
     this.functionService.update(this.function, this.function.id).then(data => {
       console.log(data);
-      this.router.navigateByUrl("/admin/functions")
+      this.router.navigateByUrl('/admin/functions');
     }, err => console.log(err.message));
   }
 }

@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Function} from '../../../entities/Function';
-import {FunctionService} from '../../../services/function.service';
 import {Router} from '@angular/router';
-import {Employee} from '../../../entities/employee';
 import {EmployeeService} from '../../../services/employee.service';
 
 @Component({
@@ -22,9 +19,10 @@ export class EmployeesIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadData()
+    this.loadData();
   }
-  loadData(){
+
+  loadData() {
     this.employeeService.getPage(this.currentPage, this.size).then(employees => {
         this.data = employees;
         this.employees = this.data.content;
@@ -34,6 +32,7 @@ export class EmployeesIndexComponent implements OnInit {
       },
       err => console.log(err.message));
   }
+
   edit(id) {
     this.router.navigateByUrl('/admin/employees/' + id + '/edit');
   }
@@ -53,6 +52,6 @@ export class EmployeesIndexComponent implements OnInit {
 
   paginate(event) {
     this.currentPage = event.page;
-    this.loadData()
+    this.loadData();
   }
 }

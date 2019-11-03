@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Department} from '../../../entities/department';
 import {DepartmentService} from '../../../services/department.service';
@@ -9,7 +9,7 @@ import {DepartmentService} from '../../../services/department.service';
   styleUrls: ['./departments-edit.component.css']
 })
 export class DepartmentsEditComponent implements OnInit {
-  department: Department={id: 0, name: ""};
+  department: Department = {id: 0, name: ''};
 
   constructor(private route: ActivatedRoute, private router: Router, private departmentService: DepartmentService) {
   }
@@ -27,7 +27,7 @@ export class DepartmentsEditComponent implements OnInit {
   update() {
     this.departmentService.update(this.department, this.department.id).then(data => {
       console.log(data);
-      this.router.navigateByUrl("/admin/departments")
+      this.router.navigateByUrl('/admin/departments');
     }, err => console.log(err.message));
   }
 

@@ -1,1 +1,38 @@
-<p>employees-edit works!</p>
+<span class="ui-float-label">
+    <input id="fName" type="text" name="firstName" [(ngModel)]="employee.firstName" size="30" pInputText>
+    <label for="fName">Nom</label>
+</span>
+<span class="ui-float-label">
+    <input id="lName" type="text" name="lastName" [(ngModel)]="employee.lastName" size="30" pInputText>
+    <label for="lName">Prenom</label>
+</span>
+<span class="ui-float-label">
+    <input id="registrationNumber" type="text" name="registrationNumber" [(ngModel)]="employee.registrationNumber"
+           size="30" pInputText>
+    <label for="registrationNumber">Matricule</label>
+</span>
+<span class="ui-float-label">
+    <input id="cin" type="text" name="cin" [(ngModel)]="employee.cin" size="30" pInputText>
+    <label for="cin">CIN</label>
+</span>
+<span class="ui-float-label">
+    <input id="email" type="text" name="email" [(ngModel)]="employee.email" size="30" pInputText>
+    <label for="email">Email</label>
+</span>
+<span class="ui-float-label">
+    <input id="tel" type="text" name="tel" [(ngModel)]="employee.tel" size="30" pInputText>
+    <label for="tel">Telephone</label>
+</span>
+<span class="ui-float-label">
+<p-autoComplete id="function" [(ngModel)]="employee.function" [suggestions]="functions" [size]="26" field="name"
+                (completeMethod)="searchForFunction($event)" [dropdown]="true"></p-autoComplete>
+<label for="function">Fonction</label>
+</span>
+<span class="ui-float-label">
+<p-autoComplete id="department" [(ngModel)]="employee.department" [suggestions]="departments" field="name" [size]="26"
+                (completeMethod)="searchForDepartment($event)" [dropdown]="true">
+</p-autoComplete>
+  <label for="department">Departement</label>
+</span>
+
+<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="update()"></button>

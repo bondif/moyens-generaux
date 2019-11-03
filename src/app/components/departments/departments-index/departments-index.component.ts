@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DepartmentService} from '../../../services/department.service';
 import {Router} from '@angular/router';
 import {Department} from '../../../entities/department';
@@ -10,8 +10,11 @@ import {Department} from '../../../entities/department';
 })
 export class DepartmentsIndexComponent implements OnInit {
 
-  constructor(private departmentService:DepartmentService,private router:Router) { }
-  departments:Department[];
+  constructor(private departmentService: DepartmentService, private router: Router) {
+  }
+
+  departments: Department[];
+
   ngOnInit() {
     this.departmentService.getAll().then(departments => this.departments = departments, err => console.log(err.message));
 

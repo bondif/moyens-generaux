@@ -1,4 +1,4 @@
-<p-table [value]="employees" >
+<p-table [value]="employees">
   <ng-template pTemplate="header">
     <tr>
       <th>Nom Complete</th>
@@ -14,7 +14,7 @@
   </ng-template>
   <ng-template pTemplate="body" let-employee>
     <tr>
-      <td>{{employee.firstName+" "+employee.lastName}} </td>
+      <td>{{employee.firstName + " " + employee.lastName}} </td>
       <td>{{employee.registrationNumber}}</td>
       <td>{{employee.cin}}</td>
       <td>{{employee.email}}</td>
@@ -22,10 +22,12 @@
       <td>{{employee.function.name}}</td>
       <td>{{employee.department.name}}</td>
       <td>
-        <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning" (click)="edit(employee.id)"></button>
+        <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning"
+                (click)="edit(employee.id)"></button>
       </td>
       <td>
-        <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger" (click)="delete(employee.id)"></button>
+        <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger"
+                (click)="delete(employee.id)"></button>
       </td>
     </tr>
   </ng-template>

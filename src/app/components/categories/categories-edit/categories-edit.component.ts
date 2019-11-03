@@ -11,17 +11,18 @@ import {CategoryService} from '../../../services/category.service';
 export class CategoriesEditComponent implements OnInit {
 
   name: string;
-  category:Category=new class implements Category {
+  category: Category = new class implements Category {
     id: number;
     name: string;
-  }
-  constructor(private route: ActivatedRoute, private router: Router, private categoryService:CategoryService) {
+  };
+
+  constructor(private route: ActivatedRoute, private router: Router, private categoryService: CategoryService) {
   }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.categoryService.getOne(params.get('id')).then(data => {
-        this.category=data
+        this.category = data;
         console.log(data);
       }, err => console.log(err.message));
       console.log(params.get('id'));
@@ -29,9 +30,9 @@ export class CategoriesEditComponent implements OnInit {
   }
 
   update() {
-    this.categoryService.update(this.category,this.category.id).then(data => {
+    this.categoryService.update(this.category, this.category.id).then(data => {
       console.log(data);
-      this.router.navigateByUrl("/admin/categories")
+      this.router.navigateByUrl('/admin/categories');
     }, err => console.log(err.message));
   }
 }

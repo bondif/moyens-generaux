@@ -9,6 +9,6 @@ export interface Employee {
   email: string;
   registrationNumber: string;
   cin: string;
-  function:Function;
-  department:Department;
+  function: Function;
+  department: Department;
 }
