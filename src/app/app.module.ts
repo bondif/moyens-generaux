@@ -37,6 +37,7 @@ import { FixPhonesCreateComponent } from './components/fix-phones/fix-phones-cre
 import { ModemsCreateComponent } from './components/modems/modems-create/modems-create.component';
 import { SimCardsCreateComponent } from './components/sim-cards/sim-cards-create/sim-cards-create.component';
 import { ToolsIndexComponent } from './components/tools/tools-index/tools-index.component';
+import {DropdownModule} from 'primeng/dropdown';
 
 const routes: Routes = [
   {
@@ -109,7 +110,7 @@ const routes: Routes = [
   },
   {
     path: 'admin/equipments/:id/edit',
-    component: EmployeesEditComponent
+    component: EquipmentsEditComponent
   },
   {
     path: 'admin/fix-phones/create',
@@ -169,6 +170,7 @@ const routes: Routes = [
     AutoCompleteModule,
     PaginatorModule,
     InputTextModule,
+    DropdownModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

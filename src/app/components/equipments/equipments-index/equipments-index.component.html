@@ -7,6 +7,8 @@
       <th>Module</th>
       <th>Categorie</th>
       <th>Situation</th>
+      <th>Editer</th>
+      <th>Supprimer</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-item>
@@ -15,7 +17,7 @@
       <td>{{item.registrationNumber}}</td>
       <td>{{item.brand}}</td>
       <td>{{item.model}}</td>
-      <td>{{item.category.name}}</td>
+      <td>{{item.category?.name}}</td>
       <td>{{item.state.name}}</td>
 
 

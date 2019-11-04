@@ -1,1 +1,26 @@
-<p>equipments-edit works!</p>
+<span class="ui-float-label">
+    <input id="brand" type="text" name="brand" [(ngModel)]="equipment.brand" size="30" pInputText>
+    <label for="brand">Marque</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="registrationNumber" type="text" name="registrationNumber" [(ngModel)]="equipment.registrationNumber"
+           size="30" pInputText>
+    <label for="registrationNumber">Matricule</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="model" type="text" name="model" [(ngModel)]="equipment.model" size="30" pInputText>
+    <label for="model">Module</label>
+</span>
+<span class="ui-float-label">
+<p-dropdown id="states" optionLabel="name" [options]="states" [(ngModel)]="equipment.state"></p-dropdown>
+</span>
+
+<span class="ui-float-label">
+<p-dropdown id="categories" optionLabel="name" [options]="categories" [(ngModel)]="equipment.category"></p-dropdown>
+</span>
+
+
+<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="update()"></button>
+
