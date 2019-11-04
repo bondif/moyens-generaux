@@ -1,0 +1,34 @@
+<span class="ui-float-label">
+    <input id="brand" type="text" name="brand" [(ngModel)]="fixPhone.brand" size="30" pInputText>
+    <label for="brand">Marque</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="registrationNumber" type="text" name="registrationNumber" [(ngModel)]="fixPhone.registrationNumber"
+           size="30" pInputText>
+    <label for="registrationNumber">Matricule</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="model" type="text" name="model" [(ngModel)]="fixPhone.model" size="30" pInputText>
+    <label for="model">Module</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="ceiling" type="text" name="ceiling" [(ngModel)]="fixPhone.ceiling" size="30" pInputText>
+    <label for="ceiling">Plafond</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="number" type="text" name="number" [(ngModel)]="fixPhone.number" size="30" pInputText>
+    <label for="number">Numero</label>
+</span>
+<span class="ui-float-label">
+
+<p-autoComplete id="category" [(ngModel)]="fixPhone.category" [suggestions]="categories" [size]="26" field="name"
+                (completeMethod)="searchForCategories($event)" [dropdown]="true"></p-autoComplete>
+<label for="category">Categorie</label>
+</span>
+
+
+<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="save()"></button>

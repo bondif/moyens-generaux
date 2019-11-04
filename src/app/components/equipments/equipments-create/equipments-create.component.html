@@ -1,0 +1,24 @@
+<span class="ui-float-label">
+    <input id="brand" type="text" name="brand" [(ngModel)]="equipment.brand" size="30" pInputText>
+    <label for="brand">Marque</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="registrationNumber" type="text" name="registrationNumber" [(ngModel)]="equipment.registrationNumber"
+           size="30" pInputText>
+    <label for="registrationNumber">Matricule</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="model" type="text" name="model" [(ngModel)]="equipment.model" size="30" pInputText>
+    <label for="model">Module</label>
+</span>
+<span class="ui-float-label">
+
+<p-autoComplete id="category" [(ngModel)]="equipment.category" [suggestions]="categories" [size]="26" field="name"
+                (completeMethod)="searchForCategories($event)" [dropdown]="true"></p-autoComplete>
+<label for="category">Categorie</label>
+</span>
+
+
+<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="save()"></button>

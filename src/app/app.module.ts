@@ -30,6 +30,12 @@ import {PaginatorModule} from 'primeng/paginator';
 import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
 import { VehiclesCreateComponent } from './components/vehicles/vehicles-create/vehicles-create.component';
 import { VehiclesEditComponent } from './components/vehicles/vehicles-edit/vehicles-edit.component';
+import { EquipmentsCreateComponent } from './components/equipments/equipments-create/equipments-create.component';
+import { EquipmentsEditComponent } from './components/equipments/equipments-edit/equipments-edit.component';
+import { EquipmentsIndexComponent } from './components/equipments/equipments-index/equipments-index.component';
+import { FixPhonesCreateComponent } from './components/fix-phones/fix-phones-create/fix-phones-create.component';
+import { ModemsCreateComponent } from './components/modems/modems-create/modems-create.component';
+import { SimCardsCreateComponent } from './components/sim-cards/sim-cards-create/sim-cards-create.component';
 
 const routes: Routes = [
   {
@@ -91,6 +97,30 @@ const routes: Routes = [
   {
     path: 'admin/employees/:id/edit',
     component: EmployeesEditComponent
+  },
+  {
+    path: 'admin/equipments',
+    component: EquipmentsIndexComponent
+  },
+  {
+    path: 'admin/equipments/create',
+    component: EquipmentsCreateComponent
+  },
+  {
+    path: 'admin/equipments/:id/edit',
+    component: EmployeesEditComponent
+  },
+  {
+    path: 'admin/fix-phones/create',
+    component: FixPhonesCreateComponent
+  },
+  {
+    path: 'admin/modems/create',
+    component: ModemsCreateComponent
+  },
+  {
+    path: 'admin/sim-cards/create',
+    component: SimCardsCreateComponent
   }
 ];
 
@@ -115,6 +145,13 @@ const routes: Routes = [
     VehiclesIndexComponent,
     VehiclesCreateComponent,
     VehiclesEditComponent,
+    EquipmentsCreateComponent,
+    EquipmentsEditComponent,
+    EquipmentsIndexComponent,
+    FixPhonesCreateComponent,
+    ModemsCreateComponent,
+    SimCardsCreateComponent,
+>>>>>>> 3e0f6279a584baef2c2a659f082c07d5acbfa0bb
   ],
   imports: [
     BrowserModule,
