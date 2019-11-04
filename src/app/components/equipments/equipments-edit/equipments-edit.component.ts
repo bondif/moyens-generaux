@@ -44,7 +44,7 @@ export class EquipmentsEditComponent implements OnInit {
   }
 
   update() {
-    this.equipmentService.save(this.equipment).then(data => {
+    this.equipmentService.update(this.equipment,this.equipment.id).then(data => {
       console.log(data);
       this.router.navigateByUrl('/admin/equipments');
     }, err => console.log(err.message));
