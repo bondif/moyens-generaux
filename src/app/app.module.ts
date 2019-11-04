@@ -38,6 +38,12 @@ import { ModemsCreateComponent } from './components/modems/modems-create/modems-
 import { SimCardsCreateComponent } from './components/sim-cards/sim-cards-create/sim-cards-create.component';
 import { ToolsIndexComponent } from './components/tools/tools-index/tools-index.component';
 import {DropdownModule} from 'primeng/dropdown';
+import { FixPhonesIndexComponent } from './components/fix-phones/fix-phones-index/fix-phones-index.component';
+import { FixPhonesEditComponent } from './components/fix-phones/fix-phones-edit/fix-phones-edit.component';
+import { SimCardsIndexComponent } from './components/sim-cards/sim-cards-index/sim-cards-index.component';
+import { SimCardsEditComponent } from './components/sim-cards/sim-cards-edit/sim-cards-edit.component';
+import { ModemEditComponent } from './components/modems/modem-edit/modem-edit.component';
+import { ModemIndexComponent } from './components/modems/modem-index/modem-index.component';
 
 const routes: Routes = [
   {
@@ -113,16 +119,40 @@ const routes: Routes = [
     component: EquipmentsEditComponent
   },
   {
+    path: 'admin/fix-phones',
+    component: FixPhonesIndexComponent
+  },
+  {
     path: 'admin/fix-phones/create',
     component: FixPhonesCreateComponent
+  },
+  {
+    path: 'admin/fix-phones/:id/edit',
+    component: FixPhonesEditComponent
+  },
+  {
+    path: 'admin/modems',
+    component: ModemIndexComponent
   },
   {
     path: 'admin/modems/create',
     component: ModemsCreateComponent
   },
   {
+    path: 'admin/modems/:id/edit',
+    component: ModemEditComponent
+  },
+  {
+    path: 'admin/sim-cards',
+    component: SimCardsIndexComponent
+  },
+  {
     path: 'admin/sim-cards/create',
     component: SimCardsCreateComponent
+  },
+  {
+    path: 'admin/sim-cards/:id/edit',
+    component: SimCardsEditComponent
   },
   {
     path: 'admin/tools',
@@ -158,6 +188,12 @@ const routes: Routes = [
     ModemsCreateComponent,
     SimCardsCreateComponent,
     ToolsIndexComponent,
+    FixPhonesIndexComponent,
+    FixPhonesEditComponent,
+    SimCardsIndexComponent,
+    SimCardsEditComponent,
+    ModemEditComponent,
+    ModemIndexComponent,
   ],
   imports: [
     BrowserModule,
