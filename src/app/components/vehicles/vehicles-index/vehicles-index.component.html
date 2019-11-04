@@ -1,0 +1,28 @@
+<p-table [value]="vehicles">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>#</th>
+      <th>vin</th>
+      <th>horseCount</th>
+      <th>model</th>
+      <th>Editer</th>
+      <th>Supprimer</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-vehicle>
+    <tr>
+      <td>{{vehicle.id}}</td>
+      <td>{{vehicle.vin}}</td>
+      <td>{{vehicle.horseCount}}</td>
+      <td>{{vehicle.model}}</td>
+      <td>
+        <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning"
+                (click)="edit(vehicle.id)"></button>
+      </td>
+      <td>
+        <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger"
+                (click)="delete(vehicle.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Category} from '../entities/Category';
 import {GenericService} from './generic.service';
 
-
 @Injectable({
   providedIn: 'root'
 })

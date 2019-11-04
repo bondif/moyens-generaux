@@ -1,0 +1,13 @@
+<span class="ui-float-label">
+    <input id="vin" type="text" name="name" [(ngModel)]="vehicle.vin" pInputText>
+    <label for="vin">Vin</label>
+</span>
+<span class="ui-float-label">
+    <input id="horseCount" type="num" name="name" [(ngModel)]="vehicle.horseCount" pInputText>
+    <label for="horseCount">Horse Count</label>
+</span>
+<span class="ui-float-label">
+    <input id="model" type="text" name="name" [(ngModel)]="vehicle.model" pInputText>
+    <label for="model">Model</label>
+</span>
+<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="update()"></button>

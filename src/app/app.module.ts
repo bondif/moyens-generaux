@@ -27,6 +27,9 @@ import { DepartmentsEditComponent } from './components/departments/departments-e
 import { DepartmentsCreateComponent } from './components/departments/departments-create/departments-create.component';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {PaginatorModule} from 'primeng/paginator';
+import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
+import { VehiclesCreateComponent } from './components/vehicles/vehicles-create/vehicles-create.component';
+import { VehiclesEditComponent } from './components/vehicles/vehicles-edit/vehicles-edit.component';
 import { EquipmentsCreateComponent } from './components/equipments/equipments-create/equipments-create.component';
 import { EquipmentsEditComponent } from './components/equipments/equipments-edit/equipments-edit.component';
 import { EquipmentsIndexComponent } from './components/equipments/equipments-index/equipments-index.component';
@@ -36,6 +39,18 @@ import { SimCardsCreateComponent } from './components/sim-cards/sim-cards-create
 import { ToolsIndexComponent } from './components/tools/tools-index/tools-index.component';
 
 const routes: Routes = [
+  {
+    path: 'admin/vehicles',
+    component: VehiclesIndexComponent
+  },
+  {
+    path: 'admin/vehicles/create',
+    component: VehiclesCreateComponent
+  },
+  {
+    path: 'admin/vehicles/:id/edit',
+    component: VehiclesEditComponent
+  },
   {
     path: 'admin/categories',
     component: CategoriesIndexComponent
@@ -132,6 +147,9 @@ const routes: Routes = [
     DepartmentsIndexComponent,
     DepartmentsEditComponent,
     DepartmentsCreateComponent,
+    VehiclesIndexComponent,
+    VehiclesCreateComponent,
+    VehiclesEditComponent,
     EquipmentsCreateComponent,
     EquipmentsEditComponent,
     EquipmentsIndexComponent,
