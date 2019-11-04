@@ -27,8 +27,23 @@ import { DepartmentsEditComponent } from './components/departments/departments-e
 import { DepartmentsCreateComponent } from './components/departments/departments-create/departments-create.component';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {PaginatorModule} from 'primeng/paginator';
+import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
+import { VehiclesCreateComponent } from './components/vehicles/vehicles-create/vehicles-create.component';
+import { VehiclesEditComponent } from './components/vehicles/vehicles-edit/vehicles-edit.component';
 
 const routes: Routes = [
+  {
+    path: 'admin/vehicles',
+    component: VehiclesIndexComponent
+  },
+  {
+    path: 'admin/vehicles/create',
+    component: VehiclesCreateComponent
+  },
+  {
+    path: 'admin/vehicles/:id/edit',
+    component: VehiclesEditComponent
+  },
   {
     path: 'admin/categories',
     component: CategoriesIndexComponent
@@ -97,6 +112,9 @@ const routes: Routes = [
     DepartmentsIndexComponent,
     DepartmentsEditComponent,
     DepartmentsCreateComponent,
+    VehiclesIndexComponent,
+    VehiclesCreateComponent,
+    VehiclesEditComponent,
   ],
   imports: [
     BrowserModule,
