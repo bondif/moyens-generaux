@@ -47,7 +47,7 @@ export class EquipmentsCreateComponent implements OnInit {
 
     console.log(this.equipment);
     this.equipmentService.save(this.equipment).then(data => {
-      this.router.navigateByUrl('/admin/equipments');
+      // this.router.navigateByUrl('/admin/equipments');
     }, error => {
       console.log(error);
     });

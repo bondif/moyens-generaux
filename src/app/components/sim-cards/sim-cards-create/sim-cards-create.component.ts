@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Category} from '../../../entities/Category';
-import {FixPhone} from '../../../entities/Fixphone';
 import {SimCard} from '../../../entities/SimCard';
 import {CategoryService} from '../../../services/category.service';
 import {SimCardService} from '../../../services/sim-card.service';

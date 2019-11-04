@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FixPhone} from '../../../entities/Fixphone';
+import {Component, OnInit} from '@angular/core';
 import {Category} from '../../../entities/Category';
 import {CategoryService} from '../../../services/category.service';
-import {FixPhoneService} from '../../../services/fix-phone.service';
 import {Router} from '@angular/router';
 import {Modem} from '../../../entities/Modem';
 import {ModemService} from '../../../services/modem.service';

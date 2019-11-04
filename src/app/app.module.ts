@@ -33,6 +33,7 @@ import { EquipmentsIndexComponent } from './components/equipments/equipments-ind
 import { FixPhonesCreateComponent } from './components/fix-phones/fix-phones-create/fix-phones-create.component';
 import { ModemsCreateComponent } from './components/modems/modems-create/modems-create.component';
 import { SimCardsCreateComponent } from './components/sim-cards/sim-cards-create/sim-cards-create.component';
+import { ToolsIndexComponent } from './components/tools/tools-index/tools-index.component';
 
 const routes: Routes = [
   {
@@ -106,6 +107,10 @@ const routes: Routes = [
   {
     path: 'admin/sim-cards/create',
     component: SimCardsCreateComponent
+  },
+  {
+    path: 'admin/tools',
+    component: ToolsIndexComponent
   }
 ];
 
@@ -133,6 +138,7 @@ const routes: Routes = [
     FixPhonesCreateComponent,
     ModemsCreateComponent,
     SimCardsCreateComponent,
+    ToolsIndexComponent,
   ],
   imports: [
     BrowserModule,
