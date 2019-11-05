@@ -55,7 +55,7 @@ export class FixPhonesCreateComponent implements OnInit {
 
     console.log(this.fixPhone);
     this.fixPhoneService.save(this.fixPhone).then(data => {
-      // this.router.navigateByUrl('/admin/equipments');
+      this.router.navigateByUrl('/admin/fix-phones');
     }, error => {
       console.log(error);
     });
