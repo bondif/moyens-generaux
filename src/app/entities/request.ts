@@ -10,13 +10,6 @@ export interface  Request {
   assignment:Assignment;
   comment:string;
   startDate:Date;
-
-
+  endDate:Date;
 }
 
-
-  //
-  // private Short isAccepted;
-  // private String comment;
-  // private Date startDate;
-  // private Date endDate;
