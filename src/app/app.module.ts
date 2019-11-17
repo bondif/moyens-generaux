@@ -44,6 +44,8 @@ import { SimCardsIndexComponent } from './components/sim-cards/sim-cards-index/s
 import { SimCardsEditComponent } from './components/sim-cards/sim-cards-edit/sim-cards-edit.component';
 import { ModemEditComponent } from './components/modems/modem-edit/modem-edit.component';
 import { ModemIndexComponent } from './components/modems/modem-index/modem-index.component';
+import { RequestCreateComponent } from './components/request/request-create/request-create.component';
+import { LoginComponent } from './components/login/login/login.component';
 
 const routes: Routes = [
   {
@@ -109,6 +111,10 @@ const routes: Routes = [
   {
     path: 'admin/equipments',
     component: EquipmentsIndexComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'admin/equipments/create',
@@ -194,6 +200,8 @@ const routes: Routes = [
     SimCardsEditComponent,
     ModemEditComponent,
     ModemIndexComponent,
+    RequestCreateComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
