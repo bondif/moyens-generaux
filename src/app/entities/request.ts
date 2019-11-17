@@ -1,6 +1,6 @@
 import {Category} from './Category';
 import {Employee} from './employee';
-import {Assignment} from './Assignment';
+import {Assignment} from './assignment';
 
 export interface Request {
   id: number;
