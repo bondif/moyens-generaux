@@ -15,7 +15,7 @@ import {CategoriesIndexComponent} from './components/categories/categories-index
 import {FunctionsIndexComponent} from './components/functions/functions-index/functions-index.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {CategoriesCreateComponent} from './components/categories/categories-create/categories-create.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CategoriesEditComponent } from './components/categories/categories-edit/categories-edit.component';
 import { FunctionsCreateComponent } from './components/functions/functions-create/functions-create.component';
 import { FunctionsEditComponent } from './components/functions/functions-edit/functions-edit.component';
@@ -38,8 +38,27 @@ import { ModemsCreateComponent } from './components/modems/modems-create/modems-
 import { SimCardsCreateComponent } from './components/sim-cards/sim-cards-create/sim-cards-create.component';
 import { ToolsIndexComponent } from './components/tools/tools-index/tools-index.component';
 import {DropdownModule} from 'primeng/dropdown';
+import {FurnituresIndexComponent} from './components/furnitures/furnitures-index/furnitures-index.component';
+import {FurnituresEditComponent} from './components/furnitures/furnitures-edit/furnitures-edit.component';
+import {FurnituresCreateComponent} from './components/furnitures/furnitures-create/furnitures-create.component';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 const routes: Routes = [
+  {
+    path: 'admin/furnitures',
+    component: FurnituresIndexComponent
+  },
+  {
+    path: 'admin/furnitures/create',
+    component: FurnituresCreateComponent
+  },
+  {
+    path: 'admin/furnitures/:id/edit',
+    component: FurnituresEditComponent
+  },
   {
     path: 'admin/vehicles',
     component: VehiclesIndexComponent
@@ -158,6 +177,9 @@ const routes: Routes = [
     ModemsCreateComponent,
     SimCardsCreateComponent,
     ToolsIndexComponent,
+    FurnituresIndexComponent,
+    FurnituresEditComponent,
+    FurnituresCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -171,9 +193,13 @@ const routes: Routes = [
     PaginatorModule,
     InputTextModule,
     DropdownModule,
-    RouterModule.forRoot(routes)
+    MessagesModule,
+    MessageModule,
+    ConfirmDialogModule,
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

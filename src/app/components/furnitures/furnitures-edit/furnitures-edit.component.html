@@ -1,0 +1,69 @@
+<form [formGroup]="form" (ngSubmit)="update()">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Marque</div>
+      <div class="ui-grid-col-6">
+        <input id="brand" type="text" formControlName="brand" size="30" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['brand'].valid&&form.controls['brand'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Matricule</div>
+      <div class="ui-grid-col-6">
+        <input id="registrationNumber" type="text" formControlName="registrationNumber" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['registrationNumber'].valid&&form.controls['registrationNumber'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Module</div>
+      <div class="ui-grid-col-6">
+        <input id="model" type="text" formControlName="model" pInputText>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['model'].valid&&form.controls['model'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Catégories</div>
+      <div class="ui-grid-col-6">
+        <p-dropdown id="categories" placeholder="Choisir une catégorie" required optionLabel="name"
+                    [options]="categories" formControlName="category"></p-dropdown>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['category'].valid&&form.controls['category'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Etat</div>
+      <div class="ui-grid-col-6">
+        <p-dropdown id="states" placeholder="Choisir un état" required optionLabel="name"
+                    [options]="states"
+                    formControlName="state"></p-dropdown>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['category'].valid&&form.controls['category'].dirty"></p-message>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ui-grid-row mt-4">
+    <div class="ui-grid-col-8">
+      <button pButton type="submit" label="Enregistrer" class="ui-button-raised ml-2" [disabled]="!form.valid"></button>
+    </div>
+  </div>
+
+</form>
