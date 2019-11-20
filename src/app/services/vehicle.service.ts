@@ -9,6 +9,6 @@ import {Vehicle} from '../entities/Vehicle';
 export class VehicleService extends GenericService<Vehicle> {
 
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:8080/api/admin/vehicles/')
+    super(http, 'http://localhost:8080/api/admin/vehicles')
   }
 }

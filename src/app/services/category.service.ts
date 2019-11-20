@@ -9,7 +9,7 @@ import {GenericService} from './generic.service';
 export class CategoryService extends GenericService<Category> {
 
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:8080/api/admin/categories/');
+    super(http, 'http://localhost:8080/api/admin/categories');
   }
 
 }

@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 export class EmployeeService extends GenericService<Employee> {
 
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:8080/api/admin/employees/');
+    super(http, 'http://localhost:8080/api/admin/employees');
   }
 
 }

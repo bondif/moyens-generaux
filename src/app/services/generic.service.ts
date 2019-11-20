@@ -4,7 +4,8 @@ import {AuthenticationService} from './authentication.service';
 
 export abstract class GenericService<Entity> {
   // @ts-ignore
-  protected auth: AuthenticationService=new AuthenticationService();
+  protected auth: AuthenticationService = new AuthenticationService();
+
   protected constructor(protected http: HttpClient, protected BASE_URL: string) {
   }
 
@@ -30,7 +31,7 @@ export abstract class GenericService<Entity> {
   }
 
   getOne(id) {
-    return this.http.get(this.BASE_URL + id, this.headers)
+    return this.http.get(this.BASE_URL + '/' + id, this.headers)
       .toPromise()
       .then(res => <Entity> res)
       .then(data => {
@@ -47,7 +48,7 @@ export abstract class GenericService<Entity> {
   }
 
   update(entity: Entity, id) {
-    return this.http.put(this.BASE_URL + id, entity, this.headers)
+    return this.http.put(this.BASE_URL + '/' + id, entity, this.headers)
       .toPromise()
       .then(data => {
         return data;
@@ -55,7 +56,7 @@ export abstract class GenericService<Entity> {
   }
 
   delete(id) {
-    return this.http.delete(this.BASE_URL + id, this.headers)
+    return this.http.delete(this.BASE_URL + '/' + id, this.headers)
       .toPromise()
       .then(data => {
         return data;

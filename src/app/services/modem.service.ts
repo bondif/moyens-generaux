@@ -10,6 +10,6 @@ import {Modem} from '../entities/Modem';
 export class ModemService extends GenericService<Modem> {
 
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:8080/api/admin/modems/');
+    super(http, 'http://localhost:8080/api/admin/modems');
   }
 }
