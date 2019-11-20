@@ -49,6 +49,9 @@ import {LoginComponent} from './components/login/login/login.component';
 import {ResetPasswordComponent} from './components/login/reset-password/reset-password.component';
 import {ForgotPasswordComponent} from './components/login/forgot-password/forgot-password.component';
 import {ChangePasswordComponent} from './components/login/change-password/change-password.component';
+import {CalendarModule} from 'primeng/calendar';
+import { RequestIndexComponent } from './components/request/request-index/request-index.component';
+import { RequestEditComponent } from './components/request/request-edit/request-edit.component';
 
 const routes: Routes = [
   {
@@ -160,6 +163,18 @@ const routes: Routes = [
     component: SimCardsCreateComponent
   },
   {
+    path: 'user/requests/create',
+    component: RequestCreateComponent
+  },
+  {
+    path: 'user/requests',
+    component: RequestIndexComponent
+  },
+  {
+    path: 'user/requests/:id/edit',
+    component: RequestEditComponent
+  },
+  {
     path: 'admin/sim-cards/:id/edit',
     component: SimCardsEditComponent
   },
@@ -220,6 +235,8 @@ const routes: Routes = [
     ResetPasswordComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
+    RequestIndexComponent,
+    RequestEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -233,7 +250,8 @@ const routes: Routes = [
     PaginatorModule,
     InputTextModule,
     DropdownModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
