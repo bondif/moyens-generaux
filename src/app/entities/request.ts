@@ -11,5 +11,6 @@ export interface Request {
   comment: string;
   startDate: Date;
   endDate: Date;
+  requestDate:Date;
 }
 
