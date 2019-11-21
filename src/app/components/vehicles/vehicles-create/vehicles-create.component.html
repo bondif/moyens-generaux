@@ -1,13 +1,80 @@
-<span class="ui-float-label">
-    <input id="vin" type="text" name="name" [(ngModel)]="vehicle.vin" pInputText>
-    <label for="vin">Vin</label>
-</span>
-<span class="ui-float-label">
-    <input id="horseCount" type="num" name="name" [(ngModel)]="vehicle.horseCount" pInputText>
-    <label for="horseCount">Horse Count</label>
-</span>
-<span class="ui-float-label">
-    <input id="model" type="text" name="name" [(ngModel)]="vehicle.model" pInputText>
-    <label for="model">Model</label>
-</span>
-<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="save()"></button>
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Marque</div>
+      <div class="ui-grid-col-6">
+        <input id="brand" type="text" formControlName="brand" size="30" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['brand'].valid&&form.controls['brand'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Matricule</div>
+      <div class="ui-grid-col-6">
+        <input id="registrationNumber" type="text" formControlName="registrationNumber"
+               size="30" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['registrationNumber'].valid&&form.controls['registrationNumber'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Vin</div>
+      <div class="ui-grid-col-6">
+        <input id="vin" type="text" formControlName="vin" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['vin'].valid&&form.controls['vin'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Nombre de chevaux</div>
+      <div class="ui-grid-col-6">
+        <input id="horseCount" type="number" formControlName="horseCount" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['horseCount'].valid&&form.controls['horseCount'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Modèle</div>
+      <div class="ui-grid-col-6">
+        <input id="model" type="text" formControlName="model" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['model'].valid&&form.controls['model'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Catégories</div>
+      <div class="ui-grid-col-6">
+        <p-dropdown id="categories" placeholder="Choisir une catégorie" required optionLabel="name"
+                    [options]="categories"
+                    formControlName="category"></p-dropdown>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['category'].valid&&form.controls['category'].dirty"></p-message>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ui-grid-row mt-4">
+    <div class="ui-grid-col-8">
+      <button pButton type="submit" label="Enregistrer" class="ui-button-raised ml-2" [disabled]="!form.valid"></button>
+    </div>
+  </div>
+
+</form>

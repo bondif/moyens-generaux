@@ -1,28 +1,40 @@
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+
+<button pButton type="button" label="Ajouter" class="ui-button-raised ui-button-success mb-2"
+        (click)="create()"></button>
+
 <p-table [value]="vehicles">
   <ng-template pTemplate="header">
     <tr>
-      <th>#</th>
+      <th style="width: 3em">#</th>
+      <th>Matricule</th>
+      <th>Marque</th>
       <th>vin</th>
       <th>horseCount</th>
-      <th>model</th>
-      <th>Editer</th>
-      <th>Supprimer</th>
+      <th>Modèle</th>
+      <th>Categorie</th>
+      <th>Situation</th>
+      <th>Actions</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-vehicle>
     <tr>
       <td>{{vehicle.id}}</td>
+      <td>{{vehicle.registrationNumber}}</td>
+      <td>{{vehicle.brand}}</td>
       <td>{{vehicle.vin}}</td>
       <td>{{vehicle.horseCount}}</td>
       <td>{{vehicle.model}}</td>
+      <td>{{vehicle.category?.name}}</td>
+      <td>{{vehicle.state.name}}</td>
       <td>
-        <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning"
+        <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning mr-1"
                 (click)="edit(vehicle.id)"></button>
-      </td>
-      <td>
         <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger"
                 (click)="delete(vehicle.id)"></button>
       </td>
     </tr>
   </ng-template>
 </p-table>
+
+<p-paginator [rows]="size" [totalRecords]="totalElements" (onPageChange)="paginate($event)"></p-paginator>
