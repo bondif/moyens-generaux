@@ -9,6 +9,6 @@ import {HttpClient} from '@angular/common/http';
 export class DepartmentService extends GenericService<Department> {
 
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:8080/api/admin/departments/');
+    super(http, 'http://localhost:8080/api/admin/departments');
   }
 }

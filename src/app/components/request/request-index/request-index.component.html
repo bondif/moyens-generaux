@@ -1,0 +1,44 @@
+<p-table [value]="requests">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>#</th>
+      <th>fait le</th>
+      <th>Categorie</th>
+      <th>date de debut</th>
+      <th>date de fin</th>
+      <th>Etat</th>
+      <th>tool</th>
+      <th>Editer</th>
+      <th>Supprimer</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-request>
+    <tr>
+      <td>{{request.id}} </td>
+      <td>{{request.requestDate | date:'dd/MM/yyyy, HH:mm' }} </td>
+      <td>{{request.category.name}}
+      </td>
+      <td>{{request.startDate | date:'dd/MM/yyyy, HH:mm' }}</td>
+      <td>{{request.endDate | date:'dd/MM/yyyy, HH:mm' }}</td>
+      <td *ngIf="request.isAccepted==-1"> Pas encore traiter</td>
+      <td *ngIf="request.isAccepted==0"> refuser</td>
+      <td *ngIf="request.isAccepted==1">accepter</td>
+      <td *ngIf="request.assignment!=null">{{request.assignment?.tool.brand}}</td>
+      <td *ngIf="request.assignment==null">**</td>
+      <td>
+        <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning"
+                (click)="edit(request.id)">
+        </button>
+        <button pButton type="button" label="Details" class="ui-button-raised ui-button-success"
+                (click)="edit(request.id)"></button>
+      </td>
+      <td>
+        <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger"
+                (click)="delete(request.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+<p-paginator [rows]="size" [totalRecords]="totalElements" (onPageChange)="paginate($event)"></p-paginator>

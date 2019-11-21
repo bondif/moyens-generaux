@@ -10,7 +10,7 @@ import {GenericService} from './generic.service';
 export class FunctionService extends GenericService<Function> {
 
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:8080/api/admin/functions/');
+    super(http, 'http://localhost:8080/api/admin/functions');
   }
 
 }

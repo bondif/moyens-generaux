@@ -1,0 +1,31 @@
+<span class="ui-float-label">
+    <input id="brand" type="text" name="brand" [(ngModel)]="modem.brand" size="30" pInputText>
+    <label for="brand">Marque</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="registrationNumber" type="text" name="registrationNumber" [(ngModel)]="modem.registrationNumber"
+           size="30" pInputText>
+    <label for="registrationNumber">Matricule</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="model" type="text" name="model" [(ngModel)]="modem.model" size="30" pInputText>
+    <label for="model">Module</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="number" type="text" name="number" [(ngModel)]="modem.number" size="30" pInputText>
+    <label for="number">Numero</label>
+</span>
+<span class="ui-float-label">
+<p-dropdown id="states" optionLabel="name" [options]="states" [(ngModel)]="modem.state"></p-dropdown>
+</span>
+
+<span class="ui-float-label">
+<p-dropdown id="categories" optionLabel="name" [options]="categories" [(ngModel)]="modem.category"></p-dropdown>
+</span>
+
+
+<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="update()"></button>
+

@@ -54,7 +54,7 @@ export class SimCardsCreateComponent implements OnInit {
 
     console.log(this.simCard);
     this.simCardService.save(this.simCard).then(data => {
-      // this.router.navigateByUrl('/admin/equipments');
+      this.router.navigateByUrl('/admin/sim-card');
     }, error => {
       console.log(error);
     });

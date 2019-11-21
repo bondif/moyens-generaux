@@ -1,0 +1,35 @@
+<span class="ui-float-label">
+    <input id="brand" type="text" name="brand" [(ngModel)]="simCard.brand" size="30" pInputText>
+    <label for="brand">Marque</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="registrationNumber" type="text" name="registrationNumber" [(ngModel)]="simCard.registrationNumber"
+           size="30" pInputText>
+    <label for="registrationNumber">Matricule</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="phoneNumber" type="text" name="phoneNumber" [(ngModel)]="simCard.phoneNumber" size="30" pInputText>
+    <label for="phoneNumber">Numero</label>
+</span>
+<span class="ui-float-label">
+    <input id="callsCeiling" type="text" name="callsCeiling" [(ngModel)]="simCard.callsCeiling" size="30" pInputText>
+    <label for="callsCeiling">Plafond d'appel</label>
+</span>
+
+<span class="ui-float-label">
+    <input id="internetCeiling" type="text" name="internetCeiling" [(ngModel)]="simCard.internetCeiling" size="30" pInputText>
+    <label for="internetCeiling">Plafond d'internet</label>
+</span>
+<span class="ui-float-label">
+<p-dropdown id="states" optionLabel="name" [options]="states" [(ngModel)]="simCard.state"></p-dropdown>
+</span>
+
+<span class="ui-float-label">
+<p-dropdown id="categories" optionLabel="name" [options]="categories" [(ngModel)]="simCard.category"></p-dropdown>
+</span>
+
+
+<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="update()"></button>
+

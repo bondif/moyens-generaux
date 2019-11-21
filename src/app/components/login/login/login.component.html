@@ -1,0 +1,14 @@
+<span class="ui-float-label">
+    <input id="email" type="text" name="email" [(ngModel)]="email" size="30" pInputText>
+    <label for="email">email</label>
+</span>
+<span class="ui-float-label">
+  <input id="password" type="password" name="password" [(ngModel)]="password" size="30" pInputText>
+  <label for="password">password</label>
+</span>
+<span class="ui-float-label">
+  <a routerLink="/user/forgot-password"> Mot-pass oublier</a>
+</span>
+<span class="ui-float-label">
+  <button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="auth()"></button>
+</span>

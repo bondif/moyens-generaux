@@ -16,27 +16,27 @@ import {FunctionsIndexComponent} from './components/functions/functions-index/fu
 import {InputTextModule} from 'primeng/inputtext';
 import {CategoriesCreateComponent} from './components/categories/categories-create/categories-create.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CategoriesEditComponent } from './components/categories/categories-edit/categories-edit.component';
-import { FunctionsCreateComponent } from './components/functions/functions-create/functions-create.component';
-import { FunctionsEditComponent } from './components/functions/functions-edit/functions-edit.component';
-import { EmployeesIndexComponent } from './components/employees/employees-index/employees-index.component';
-import { EmployeesEditComponent } from './components/employees/employees-edit/employees-edit.component';
-import { EmployeesCreateComponent } from './components/employees/employees-create/employees-create.component';
-import { DepartmentsIndexComponent } from './components/departments/departments-index/departments-index.component';
-import { DepartmentsEditComponent } from './components/departments/departments-edit/departments-edit.component';
-import { DepartmentsCreateComponent } from './components/departments/departments-create/departments-create.component';
+import {CategoriesEditComponent} from './components/categories/categories-edit/categories-edit.component';
+import {FunctionsCreateComponent} from './components/functions/functions-create/functions-create.component';
+import {FunctionsEditComponent} from './components/functions/functions-edit/functions-edit.component';
+import {EmployeesIndexComponent} from './components/employees/employees-index/employees-index.component';
+import {EmployeesEditComponent} from './components/employees/employees-edit/employees-edit.component';
+import {EmployeesCreateComponent} from './components/employees/employees-create/employees-create.component';
+import {DepartmentsIndexComponent} from './components/departments/departments-index/departments-index.component';
+import {DepartmentsEditComponent} from './components/departments/departments-edit/departments-edit.component';
+import {DepartmentsCreateComponent} from './components/departments/departments-create/departments-create.component';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {PaginatorModule} from 'primeng/paginator';
-import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
-import { VehiclesCreateComponent } from './components/vehicles/vehicles-create/vehicles-create.component';
-import { VehiclesEditComponent } from './components/vehicles/vehicles-edit/vehicles-edit.component';
-import { EquipmentsCreateComponent } from './components/equipments/equipments-create/equipments-create.component';
-import { EquipmentsEditComponent } from './components/equipments/equipments-edit/equipments-edit.component';
-import { EquipmentsIndexComponent } from './components/equipments/equipments-index/equipments-index.component';
-import { FixPhonesCreateComponent } from './components/fix-phones/fix-phones-create/fix-phones-create.component';
-import { ModemsCreateComponent } from './components/modems/modems-create/modems-create.component';
-import { SimCardsCreateComponent } from './components/sim-cards/sim-cards-create/sim-cards-create.component';
-import { ToolsIndexComponent } from './components/tools/tools-index/tools-index.component';
+import {VehiclesIndexComponent} from './components/vehicles/vehicles-index/vehicles-index.component';
+import {VehiclesCreateComponent} from './components/vehicles/vehicles-create/vehicles-create.component';
+import {VehiclesEditComponent} from './components/vehicles/vehicles-edit/vehicles-edit.component';
+import {EquipmentsCreateComponent} from './components/equipments/equipments-create/equipments-create.component';
+import {EquipmentsEditComponent} from './components/equipments/equipments-edit/equipments-edit.component';
+import {EquipmentsIndexComponent} from './components/equipments/equipments-index/equipments-index.component';
+import {FixPhonesCreateComponent} from './components/fix-phones/fix-phones-create/fix-phones-create.component';
+import {ModemsCreateComponent} from './components/modems/modems-create/modems-create.component';
+import {SimCardsCreateComponent} from './components/sim-cards/sim-cards-create/sim-cards-create.component';
+import {ToolsIndexComponent} from './components/tools/tools-index/tools-index.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {FurnituresIndexComponent} from './components/furnitures/furnitures-index/furnitures-index.component';
 import {FurnituresEditComponent} from './components/furnitures/furnitures-edit/furnitures-edit.component';
@@ -45,8 +45,20 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
-import { FixPhonesIndexComponent } from './components/fix-phones/fix-phones-index/fix-phones-index.component';
-import { FixPhonesEditComponent } from './components/fix-phones/fix-phones-edit/fix-phones-edit.component';
+import {FixPhonesIndexComponent} from './components/fix-phones/fix-phones-index/fix-phones-index.component';
+import {FixPhonesEditComponent} from './components/fix-phones/fix-phones-edit/fix-phones-edit.component';
+import {SimCardsIndexComponent} from './components/sim-cards/sim-cards-index/sim-cards-index.component';
+import {SimCardsEditComponent} from './components/sim-cards/sim-cards-edit/sim-cards-edit.component';
+import {ModemEditComponent} from './components/modems/modem-edit/modem-edit.component';
+import {ModemIndexComponent} from './components/modems/modem-index/modem-index.component';
+import {RequestCreateComponent} from './components/request/request-create/request-create.component';
+import {LoginComponent} from './components/login/login/login.component';
+import {ResetPasswordComponent} from './components/login/reset-password/reset-password.component';
+import {ForgotPasswordComponent} from './components/login/forgot-password/forgot-password.component';
+import {ChangePasswordComponent} from './components/login/change-password/change-password.component';
+import {CalendarModule} from 'primeng/calendar';
+import {RequestIndexComponent} from './components/request/request-index/request-index.component';
+import {RequestEditComponent} from './components/request/request-edit/request-edit.component';
 
 const routes: Routes = [
   {
@@ -126,12 +138,20 @@ const routes: Routes = [
     component: EquipmentsIndexComponent
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'admin/equipments/create',
     component: EquipmentsCreateComponent
   },
   {
     path: 'admin/equipments/:id/edit',
     component: EquipmentsEditComponent
+  },
+  {
+    path: 'admin/fix-phones',
+    component: FixPhonesIndexComponent
   },
   {
     path: 'admin/fix-phones/create',
@@ -146,16 +166,56 @@ const routes: Routes = [
     component: FixPhonesEditComponent
   },
   {
+    path: 'admin/modems',
+    component: ModemIndexComponent
+  },
+  {
     path: 'admin/modems/create',
     component: ModemsCreateComponent
+  },
+  {
+    path: 'admin/modems/:id/edit',
+    component: ModemEditComponent
+  },
+  {
+    path: 'admin/sim-cards',
+    component: SimCardsIndexComponent
   },
   {
     path: 'admin/sim-cards/create',
     component: SimCardsCreateComponent
   },
   {
+    path: 'user/requests/create',
+    component: RequestCreateComponent
+  },
+  {
+    path: 'user/requests',
+    component: RequestIndexComponent
+  },
+  {
+    path: 'user/requests/:id/edit',
+    component: RequestEditComponent
+  },
+  {
+    path: 'admin/sim-cards/:id/edit',
+    component: SimCardsEditComponent
+  },
+  {
     path: 'admin/tools',
     component: ToolsIndexComponent
+  },
+  {
+    path: 'user/update-password',
+    component: ChangePasswordComponent
+  },
+  {
+    path: 'user/change-password/:token',
+    component: ResetPasswordComponent
+  },
+  {
+    path: 'user/forgot-password',
+    component: ForgotPasswordComponent
   }
 ];
 
@@ -192,6 +252,19 @@ const routes: Routes = [
     FurnituresCreateComponent,
     FixPhonesIndexComponent,
     FixPhonesEditComponent,
+    FixPhonesIndexComponent,
+    FixPhonesEditComponent,
+    SimCardsIndexComponent,
+    SimCardsEditComponent,
+    ModemEditComponent,
+    ModemIndexComponent,
+    RequestCreateComponent,
+    LoginComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent,
+    RequestIndexComponent,
+    RequestEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -209,7 +282,9 @@ const routes: Routes = [
     MessageModule,
     ConfirmDialogModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+    CalendarModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FixPhoneService} from '../../../services/fix-phone.service';
+import {FixPhone} from '../../../entities/Fixphone';
 import {Category} from '../../../entities/Category';
 import {StateType} from '../../../entities/StateType';
 import {CategoryService} from '../../../services/category.service';
 import {StateTypeService} from '../../../services/state-type.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FixPhone} from '../../../entities/Fixphone';
-import {FixPhoneService} from '../../../services/fix-phone.service';
 
 @Component({
   selector: 'app-fix-phones-edit',

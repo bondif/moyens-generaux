@@ -54,7 +54,7 @@ export class ModemsCreateComponent implements OnInit {
 
     console.log(this.modem);
     this.modemService.save(this.modem).then(data => {
-      // this.router.navigateByUrl('/admin/equipments');
+      this.router.navigateByUrl('/admin/modems');
     }, error => {
       console.log(error);
     });

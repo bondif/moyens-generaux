@@ -10,6 +10,6 @@ import {SimCard} from '../entities/SimCard';
 export class SimCardService extends GenericService<SimCard> {
 
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:8080/api/admin/sim-cards/');
+    super(http, 'http://localhost:8080/api/admin/sim-cards');
   }
 }

@@ -9,6 +9,6 @@ import {HttpClient} from '@angular/common/http';
 export class StateTypeService extends GenericService<StateType>{
 
   constructor(http: HttpClient) {
-    super(http, 'http://localhost:8080/api/admin/state-types/');
+    super(http, 'http://localhost:8080/api/admin/state-types');
   }
 }

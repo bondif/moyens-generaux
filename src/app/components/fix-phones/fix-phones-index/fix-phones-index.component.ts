@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ConfirmService} from '../../../services/confirm.service';
 import {Router} from '@angular/router';
 import {FixPhoneService} from '../../../services/fix-phone.service';
+import {FixPhone} from '../../../entities/Fixphone';
 
 @Component({
   selector: 'app-fix-phones-index',

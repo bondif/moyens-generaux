@@ -1,0 +1,17 @@
+<div class="ui-float-label">
+  <h3>Date de debut</h3>
+  <p-calendar [(ngModel)]="request.startDate" [showTime]="true" [minDate]="sysDate"></p-calendar>
+</div>
+
+<div class="ui-float-label">
+  <h3>Date de fin</h3>
+  <p-calendar [(ngModel)]="request.endDate" [showTime]="true" [minDate]="request.startDate"></p-calendar>
+</div>
+<span class="ui-float-label">
+
+<p-autoComplete id="category" [(ngModel)]="request.category" [suggestions]="categories" [size]="26" field="name"
+                (completeMethod)="searchForCategories($event)" [dropdown]="true"></p-autoComplete>
+<label for="category">Categorie</label>
+</span>
+<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="save()"></button>
+
