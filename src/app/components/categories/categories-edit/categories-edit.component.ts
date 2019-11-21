@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Category} from '../../../entities/Category';
 import {CategoryService} from '../../../services/category.service';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-categories-edit',
@@ -10,28 +11,42 @@ import {CategoryService} from '../../../services/category.service';
 })
 export class CategoriesEditComponent implements OnInit {
 
-  name: string;
-  category: Category = new class implements Category {
-    id: number;
-    name: string;
+  form: FormGroup;
+
+  submitted: boolean;
+
+  category: Category = {
+    id: 0,
+    name: ""
   };
 
-  constructor(private route: ActivatedRoute, private router: Router, private categoryService: CategoryService) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private fb: FormBuilder,
+              private categoryService: CategoryService) {
   }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      'id': new FormControl(),
+      'name': new FormControl('', Validators.required),
+    });
+
     this.route.paramMap.subscribe(params => {
       this.categoryService.getOne(params.get('id')).then(data => {
         this.category = data;
-        console.log(data);
+
+        this.form.patchValue(this.category);
       }, err => console.log(err.message));
-      console.log(params.get('id'));
     });
+
+    this.submitted = false;
   }
 
   update() {
-    this.categoryService.update(this.category, this.category.id).then(data => {
-      console.log(data);
+    this.submitted = true;
+
+    this.categoryService.update(this.form.getRawValue(), this.category.id).then(data => {
       this.router.navigateByUrl('/admin/categories');
     }, err => console.log(err.message));
   }

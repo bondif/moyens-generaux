@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CategoryService} from '../../../services/category.service';
 import {Router} from '@angular/router';
 import {Category} from '../../../entities/Category';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-categories-create',
@@ -9,17 +10,26 @@ import {Category} from '../../../entities/Category';
   styleUrls: ['./categories-create.component.css']
 })
 export class CategoriesCreateComponent implements OnInit {
-  category: Category = {id: 0, name: ''};
+  form: FormGroup;
 
-  constructor(private categoryService: CategoryService, private router: Router) {
+  submitted: boolean;
+
+  constructor(private categoryService: CategoryService,
+              private fb: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      'name': new FormControl('', Validators.required),
+    });
+
+    this.submitted = false;
   }
 
   save() {
-    this.categoryService.save(this.category).then(data => {
-      console.log(data);
+    this.submitted = true;
+    this.categoryService.save(this.form.getRawValue()).then(data => {
       this.router.navigateByUrl('/admin/categories');
     }, err => console.log(err.message));
   }

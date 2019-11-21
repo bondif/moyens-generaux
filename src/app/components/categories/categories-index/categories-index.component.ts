@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CategoryService} from '../../../services/category.service';
 import {Category} from '../../../entities/Category';
 import {Router} from '@angular/router';
+import {ConfirmService} from '../../../services/confirm.service';
 
 @Component({
   selector: 'categories-app-index',
@@ -12,7 +13,9 @@ export class CategoriesIndexComponent implements OnInit {
 
   categories: Category[];
 
-  constructor(private categoryService: CategoryService, private router: Router) {
+  constructor(private categoryService: CategoryService,
+              private confirmService: ConfirmService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -24,15 +27,22 @@ export class CategoriesIndexComponent implements OnInit {
   }
 
   delete(id) {
-    this.categoryService.delete(id).then(
-      suceess => {
-        this.categories.forEach(e => {
-          if (e.id == id) {
-            let i = this.categories.indexOf(e);
-            this.categories.splice(i, 1);
+    this.confirmService.deleteConfirmation(
+      () => {
+        this.categoryService.delete(id).then(
+          success => {
+            this.categories.forEach(e => {
+              if (e.id == id) {
+                let i = this.categories.indexOf(e);
+                this.categories.splice(i, 1);
+              }
+            });
           }
-        });
-      }
-    );
+        )}
+      , null);
+  }
+
+  create() {
+    this.router.navigateByUrl('/admin/categories/create');
   }
 }
