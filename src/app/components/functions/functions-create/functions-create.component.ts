@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {Function} from '../../../entities/Function';
 import {FunctionService} from '../../../services/function.service';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-functions-create',
@@ -9,18 +9,27 @@ import {FunctionService} from '../../../services/function.service';
   styleUrls: ['./functions-create.component.css']
 })
 export class FunctionsCreateComponent implements OnInit {
-  function: Function = {id: 0, name: ''};
+  form: FormGroup;
 
-  constructor(private functionService: FunctionService, private router: Router) {
+  submitted: boolean;
+
+  constructor(private functionService: FunctionService,
+              private fb: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      'name': new FormControl('', Validators.required),
+    });
 
+    this.submitted = false;
   }
 
   save() {
-    this.functionService.save(this.function).then(data => {
-      console.log(data);
+    this.submitted = true;
+
+    this.functionService.save(this.form.getRawValue()).then(data => {
       this.router.navigateByUrl('/admin/functions');
     }, err => console.log(err.message));
   }

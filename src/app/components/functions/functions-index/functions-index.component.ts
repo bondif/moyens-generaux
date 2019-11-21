@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FunctionService} from '../../../services/function.service';
 import {Router} from '@angular/router';
 import {Function} from '../../../entities/Function';
+import {ConfirmService} from '../../../services/confirm.service';
 
 @Component({
   selector: 'functions-app-index',
@@ -12,7 +13,9 @@ export class FunctionsIndexComponent implements OnInit {
 
   functions: Function[];
 
-  constructor(private functionService: FunctionService, private router: Router) {
+  constructor(private functionService: FunctionService,
+              private confirmService: ConfirmService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -24,15 +27,21 @@ export class FunctionsIndexComponent implements OnInit {
   }
 
   delete(id) {
-    this.functionService.delete(id).then(
-      suceess => {
-        this.functions.forEach(e => {
-          if (e.id == id) {
-            let i = this.functions.indexOf(e);
-            this.functions.splice(i, 1);
-          }
-        });
-      }
-    );
+    this.confirmService.deleteConfirmation(() => {
+      this.functionService.delete(id).then(
+        success => {
+          this.functions.forEach(e => {
+            if (e.id == id) {
+              let i = this.functions.indexOf(e);
+              this.functions.splice(i, 1);
+            }
+          });
+        }
+      );
+    }, null);
+  }
+
+  create() {
+    this.router.navigateByUrl('/admin/functions/create');
   }
 }
