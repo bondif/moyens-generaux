@@ -45,6 +45,8 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import { FixPhonesIndexComponent } from './components/fix-phones/fix-phones-index/fix-phones-index.component';
+import { FixPhonesEditComponent } from './components/fix-phones/fix-phones-edit/fix-phones-edit.component';
 
 const routes: Routes = [
   {
@@ -136,6 +138,14 @@ const routes: Routes = [
     component: FixPhonesCreateComponent
   },
   {
+    path: 'admin/fix-phones',
+    component: FixPhonesIndexComponent
+  },
+  {
+    path: 'admin/fix-phones/:id/edit',
+    component: FixPhonesEditComponent
+  },
+  {
     path: 'admin/modems/create',
     component: ModemsCreateComponent
   },
@@ -180,6 +190,8 @@ const routes: Routes = [
     FurnituresIndexComponent,
     FurnituresEditComponent,
     FurnituresCreateComponent,
+    FixPhonesIndexComponent,
+    FixPhonesEditComponent,
   ],
   imports: [
     BrowserModule,

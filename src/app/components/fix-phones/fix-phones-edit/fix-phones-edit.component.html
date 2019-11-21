@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="save()">
+<form [formGroup]="form" (ngSubmit)="update()">
   <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
     <div class="ui-grid-row">
       <div class="ui-grid-col-2">Marque</div>
@@ -66,6 +66,19 @@
       <div class="ui-grid-col-4">
         <p-message severity="error" text="Ce champ est requis"
                    *ngIf="!form.controls['category'].valid&&form.controls['category'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Etat</div>
+      <div class="ui-grid-col-6">
+        <p-dropdown id="states" placeholder="Choisir un état" required optionLabel="name"
+                    [options]="states"
+                    formControlName="state"></p-dropdown>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['state'].valid&&form.controls['state'].dirty"></p-message>
       </div>
     </div>
   </div>
