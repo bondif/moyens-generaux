@@ -6,6 +6,7 @@ import {DepartmentService} from '../../../services/department.service';
 import {FunctionService} from '../../../services/function.service';
 import {EmployeeService} from '../../../services/employee.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-employees-edit',
@@ -13,6 +14,10 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./employees-edit.component.css']
 })
 export class EmployeesEditComponent implements OnInit {
+
+  form: FormGroup;
+
+  submitted: boolean;
 
   employee: Employee = {
     cin: '',
@@ -25,55 +30,56 @@ export class EmployeesEditComponent implements OnInit {
     registrationNumber: '',
     tel: ''
   };
+
   functions: Function[];
+
   departments: Department[];
 
   constructor(private departmentService: DepartmentService,
               private functionService: FunctionService,
               private employeeService: EmployeeService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
+    this.functionService.getAll().then(functions => {
+      this.functions = functions;
+    });
+
+    this.departmentService.getAll().then(departments => {
+      this.departments = departments;
+    });
+
+    this.form = this.fb.group({
+      'id': new FormControl(),
+      'firstName': new FormControl('', Validators.required),
+      'lastName': new FormControl('', Validators.required),
+      'registrationNumber': new FormControl('', Validators.required),
+      'cin': new FormControl('', Validators.required),
+      'email': new FormControl('', Validators.required),
+      'tel': new FormControl('', Validators.required),
+      'function': new FormControl('', Validators.required),
+      'department': new FormControl('', Validators.required),
+    });
+
     this.route.paramMap.subscribe(params => {
       this.employeeService.getOne(params.get('id')).then(data => {
         this.employee = data;
-        console.log(data);
+
+        this.form.patchValue(this.employee);
+
       }, err => console.log(err.message));
-      console.log(params.get('id'));
     });
-  }
 
-  searchForFunction(event) {
-    let query = event.query;
-    this.functionService.getAll().then(functions => {
-      this.functions = this.filterFunctions(query, functions);
-    });
-  }
-
-  searchForDepartment(event) {
-    let query = event.query;
-    this.departmentService.getAll().then(departments => {
-      this.departments = this.filterFunctions(query, departments);
-    });
-  }
-
-  filterFunctions(query, items): any[] {
-    let filtered: any[] = [];
-    let item: any;
-    for (let i = 0; i < items.length; i++) {
-      item = items[i];
-      if (item.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(item);
-      }
-    }
-    return filtered;
+    this.submitted = false;
   }
 
   update() {
-    this.employeeService.save(this.employee).then(data => {
-      console.log(data);
+    this.submitted = true;
+
+    this.employeeService.save(this.form.getRawValue()).then(data => {
       this.router.navigateByUrl('/admin/employees');
     }, err => console.log(err.message));
   }

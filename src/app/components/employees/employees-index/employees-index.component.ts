@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {EmployeeService} from '../../../services/employee.service';
+import {ConfirmService} from '../../../services/confirm.service';
 
 @Component({
   selector: 'app-employees-index',
@@ -15,7 +16,9 @@ export class EmployeesIndexComponent implements OnInit {
   totalPages: number;
   totalElements: number;
 
-  constructor(private employeeService: EmployeeService, private router: Router) {
+  constructor(private employeeService: EmployeeService,
+              private confirmService: ConfirmService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -38,20 +41,28 @@ export class EmployeesIndexComponent implements OnInit {
   }
 
   delete(id) {
-    this.employeeService.delete(id).then(
-      suceess => {
-        this.employees.forEach(e => {
-          if (e.id == id) {
-            let i = this.employees.indexOf(e);
-            this.employees.splice(i, 1);
+    this.confirmService.deleteConfirmation(
+      () => {
+        this.employeeService.delete(id).then(
+          success => {
+            this.employees.forEach(e => {
+              if (e.id == id) {
+                let i = this.employees.indexOf(e);
+                this.employees.splice(i, 1);
+              }
+            });
           }
-        });
-      }
+        )
+      }, null
     );
   }
 
   paginate(event) {
     this.currentPage = event.page;
     this.loadData();
+  }
+
+  create() {
+    this.router.navigateByUrl('/admin/employees/create');
   }
 }

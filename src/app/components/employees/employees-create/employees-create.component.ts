@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Employee} from '../../../entities/employee';
 import {Router} from '@angular/router';
 import {EmployeeService} from '../../../services/employee.service';
 import {Function} from '../../../entities/Function';
 import {FunctionService} from '../../../services/function.service';
 import {Department} from '../../../entities/department';
 import {DepartmentService} from '../../../services/department.service';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-employees-create',
@@ -13,62 +13,51 @@ import {DepartmentService} from '../../../services/department.service';
   styleUrls: ['./employees-create.component.css']
 })
 export class EmployeesCreateComponent implements OnInit {
-  employee: Employee = {
-    cin: '',
-    department: {id: 0, name: ''},
-    email: '',
-    firstName: '',
-    function: {id: 0, name: ''},
-    id: 0,
-    lastName: '',
-    registrationNumber: '',
-    tel: ''
-  };
+
+  form: FormGroup;
+
+  submitted: boolean;
+
   functions: Function[];
+
   departments: Department[];
 
-  constructor(private departmentService: DepartmentService, private functionService: FunctionService, private employeeService: EmployeeService, private router: Router) {
+  constructor(private departmentService: DepartmentService,
+              private functionService: FunctionService,
+              private employeeService: EmployeeService,
+              private router: Router,
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
-  }
-
-  searchForFunction(event) {
-    let query = event.query;
     this.functionService.getAll().then(functions => {
-      this.functions = this.filterFunctions(query, functions);
+      this.functions = functions;
     });
-  }
 
-  searchForDepartment(event) {
-    let query = event.query;
     this.departmentService.getAll().then(departments => {
-      this.departments = this.filterFunctions(query, departments);
+      this.departments = departments;
     });
-  }
 
-  filterFunctions(query, items): any[] {
-    let filtered: any[] = [];
-    let item: any;
-    for (let i = 0; i < items.length; i++) {
-      item = items[i];
-      if (item.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(item);
-      }
-    }
-    return filtered;
+    this.form = this.fb.group({
+      'firstName': new FormControl('', Validators.required),
+      'lastName': new FormControl('', Validators.required),
+      'registrationNumber': new FormControl('', Validators.required),
+      'cin': new FormControl('', Validators.required),
+      'email': new FormControl('', Validators.required),
+      'tel': new FormControl('', Validators.required),
+      'function': new FormControl('', Validators.required),
+      'department': new FormControl('', Validators.required),
+    });
+
+    this.submitted = false;
   }
 
   save() {
+    this.submitted = true;
 
-    console.log(this.employee);
-    this.employeeService.save(this.employee).then(data => {
+    this.employeeService.save(this.form.getRawValue()).then(data => {
       this.router.navigateByUrl('/admin/employees');
-    }, error => {
-      console.log(error);
-    });
-
+    }, error => {console.log(error);});
   }
-
 
 }

@@ -1,38 +1,96 @@
-<span class="ui-float-label">
-    <input id="fName" type="text" name="firstName" [(ngModel)]="employee.firstName" size="30" pInputText>
-    <label for="fName">Nom</label>
-</span>
-<span class="ui-float-label">
-    <input id="lName" type="text" name="lastName" [(ngModel)]="employee.lastName" size="30" pInputText>
-    <label for="lName">Prenom</label>
-</span>
-<span class="ui-float-label">
-    <input id="registrationNumber" type="text" name="registrationNumber" [(ngModel)]="employee.registrationNumber"
-           size="30" pInputText>
-    <label for="registrationNumber">Matricule</label>
-</span>
-<span class="ui-float-label">
-    <input id="cin" type="text" name="cin" [(ngModel)]="employee.cin" size="30" pInputText>
-    <label for="cin">CIN</label>
-</span>
-<span class="ui-float-label">
-    <input id="email" type="text" name="email" [(ngModel)]="employee.email" size="30" pInputText>
-    <label for="email">Email</label>
-</span>
-<span class="ui-float-label">
-    <input id="tel" type="text" name="tel" [(ngModel)]="employee.tel" size="30" pInputText>
-    <label for="tel">Telephone</label>
-</span>
-<span class="ui-float-label">
-<p-autoComplete id="function" [(ngModel)]="employee.function" [suggestions]="functions" [size]="26" field="name"
-                (completeMethod)="searchForFunction($event)" [dropdown]="true"></p-autoComplete>
-<label for="function">Fonction</label>
-</span>
-<span class="ui-float-label">
-<p-autoComplete id="department" [(ngModel)]="employee.department" [suggestions]="departments" field="name" [size]="26"
-                (completeMethod)="searchForDepartment($event)" [dropdown]="true">
-</p-autoComplete>
-  <label for="department">Departement</label>
-</span>
+<form [formGroup]="form" (ngSubmit)="update()">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Prénom</div>
+      <div class="ui-grid-col-6">
+        <input id="firstName" type="text" formControlName="firstName" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['firstName'].valid&&form.controls['firstName'].dirty"></p-message>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Nom</div>
+      <div class="ui-grid-col-6">
+        <input id="lastName" type="text" formControlName="lastName" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['lastName'].valid&&form.controls['lastName'].dirty"></p-message>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Matricule</div>
+      <div class="ui-grid-col-6">
+        <input id="registrationNumber" type="text" formControlName="registrationNumber" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['registrationNumber'].valid&&form.controls['registrationNumber'].dirty"></p-message>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">CIN</div>
+      <div class="ui-grid-col-6">
+        <input id="cin" type="text" formControlName="cin" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['cin'].valid&&form.controls['cin'].dirty"></p-message>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Email</div>
+      <div class="ui-grid-col-6">
+        <input id="email" type="email" formControlName="email" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['email'].valid&&form.controls['email'].dirty"></p-message>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Tel</div>
+      <div class="ui-grid-col-6">
+        <input id="tel" type="email" formControlName="tel" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['tel'].valid&&form.controls['tel'].dirty"></p-message>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Fonction</div>
+      <div class="ui-grid-col-6">
+        <p-dropdown id="functions" placeholder="Choisir une fonction" required optionLabel="name"
+                    [options]="functions"
+                    formControlName="function"></p-dropdown>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['function'].valid&&form.controls['function'].dirty"></p-message>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Départment</div>
+      <div class="ui-grid-col-6">
+        <p-dropdown id="departments" placeholder="Choisir une fonction" required optionLabel="name"
+                    [options]="departments"
+                    formControlName="department"></p-dropdown>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['department'].valid&&form.controls['department'].dirty"></p-message>
+      </div>
+    </div>
 
-<button pButton type="button" label="Enregistrer" class="ui-button-raised" (click)="update()"></button>
+  </div>
+
+  <div class="ui-grid-row mt-4">
+    <div class="ui-grid-col-8">
+      <button pButton type="submit" label="Enregistrer" class="ui-button-raised ml-2" [disabled]="!form.valid"></button>
+    </div>
+  </div>
+
+</form>
