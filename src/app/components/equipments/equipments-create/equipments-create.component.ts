@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {EquipmentService} from '../../../services/equipment.service';
 import {CategoryService} from '../../../services/category.service';
-import {Equipment} from '../../../entities/Equipment';
 import {Category} from '../../../entities/Category';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-equipments-create',
@@ -12,47 +12,41 @@ import {Category} from '../../../entities/Category';
 })
 export class EquipmentsCreateComponent implements OnInit {
 
-  equipment: Equipment = {
-    brand: '', category: {name: '', id: 0}, id: 0, model: '', registrationNumber: '', state: {id: 0, name: ''}
-  };
+  form: FormGroup;
+
+  submitted: boolean;
+
   categories: Category[];
 
-  constructor(private categoryService: CategoryService, private equipmentService: EquipmentService, private router: Router) {
+  constructor(private categoryService: CategoryService,
+              private equipmentService: EquipmentService,
+              private fb: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit() {
-  }
-
-  searchForCategories(event) {
-    let query = event.query;
     this.categoryService.getAll().then(categories => {
-      this.categories = this.filter(query, categories);
+      this.categories = categories;
     });
-  }
 
+    this.form = this.fb.group({
+      'brand': new FormControl('', Validators.required),
+      'registrationNumber': new FormControl('', Validators.required),
+      'model': new FormControl('', Validators.required),
+      'category': new FormControl('', Validators.required),
+    });
 
-  filter(query, items): any[] {
-    let filtered: any[] = [];
-    let item: any;
-    for (let i = 0; i < items.length; i++) {
-      item = items[i];
-      if (item.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(item);
-      }
-    }
-    return filtered;
+    this.submitted = false;
   }
 
   save() {
+    this.submitted = true;
 
-    console.log(this.equipment);
-    this.equipmentService.save(this.equipment).then(data => {
-      // this.router.navigateByUrl('/admin/equipments');
+    this.equipmentService.save(this.form.getRawValue()).then(data => {
+      this.router.navigateByUrl('/admin/equipments');
     }, error => {
       console.log(error);
     });
-
   }
-
 
 }

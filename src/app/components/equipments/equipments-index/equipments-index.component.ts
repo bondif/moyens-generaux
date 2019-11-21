@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {EquipmentService} from '../../../services/equipment.service';
+import {ConfirmService} from '../../../services/confirm.service';
 
 @Component({
   selector: 'app-equipments-index',
@@ -16,7 +17,9 @@ export class EquipmentsIndexComponent implements OnInit {
   totalPages: number;
   totalElements: number;
 
-  constructor(private equipmentService: EquipmentService, private router: Router) {
+  constructor(private equipmentService: EquipmentService,
+              private confirmService: ConfirmService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -29,7 +32,6 @@ export class EquipmentsIndexComponent implements OnInit {
         this.equipments = this.data.content;
         this.totalPages = this.data.totalPages;
         this.totalElements = this.data.totalElements;
-        console.log(this.data);
       },
       err => console.log(err.message));
   }
@@ -39,16 +41,18 @@ export class EquipmentsIndexComponent implements OnInit {
   }
 
   delete(id) {
-    this.equipmentService.delete(id).then(
-      suceess => {
-        this.equipments.forEach(e => {
-          if (e.id == id) {
-            let i = this.equipments.indexOf(e);
-            this.equipments.splice(i, 1);
-          }
-        });
-      }
-    );
+    this.confirmService.deleteConfirmation(() => {
+      this.equipmentService.delete(id).then(
+        success => {
+          this.equipments.forEach(e => {
+            if (e.id == id) {
+              let i = this.equipments.indexOf(e);
+              this.equipments.splice(i, 1);
+            }
+          });
+        }
+      );
+    }, null);
   }
 
   paginate(event) {
@@ -56,4 +60,7 @@ export class EquipmentsIndexComponent implements OnInit {
     this.loadData();
   }
 
+  create() {
+    this.router.navigateByUrl('/admin/equipments/create');
+  }
 }
