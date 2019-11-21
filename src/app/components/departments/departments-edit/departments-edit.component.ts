@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Department} from '../../../entities/department';
 import {DepartmentService} from '../../../services/department.service';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-departments-edit',
@@ -9,24 +10,42 @@ import {DepartmentService} from '../../../services/department.service';
   styleUrls: ['./departments-edit.component.css']
 })
 export class DepartmentsEditComponent implements OnInit {
-  department: Department = {id: 0, name: ''};
+  form: FormGroup;
 
-  constructor(private route: ActivatedRoute, private router: Router, private departmentService: DepartmentService) {
+  submitted: boolean;
+
+  department: Department = {
+    id: 0,
+    name: ''
+  };
+
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private fb: FormBuilder,
+              private departmentService: DepartmentService) {
   }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      'id': new FormControl(),
+      'name': new FormControl('', Validators.required),
+    });
+
     this.route.paramMap.subscribe(params => {
       this.departmentService.getOne(params.get('id')).then(data => {
         this.department = data;
-        console.log(data);
+
+        this.form.patchValue(this.department);
       }, err => console.log(err.message));
-      console.log(params.get('id'));
     });
+
+    this.submitted = false;
   }
 
   update() {
-    this.departmentService.update(this.department, this.department.id).then(data => {
-      console.log(data);
+    this.submitted = true;
+
+    this.departmentService.update(this.form.getRawValue(), this.department.id).then(data => {
       this.router.navigateByUrl('/admin/departments');
     }, err => console.log(err.message));
   }
