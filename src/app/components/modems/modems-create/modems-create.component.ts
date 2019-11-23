@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Category} from '../../../entities/Category';
 import {CategoryService} from '../../../services/category.service';
 import {Router} from '@angular/router';
-import {Modem} from '../../../entities/Modem';
 import {ModemService} from '../../../services/modem.service';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-modems-create',
@@ -11,54 +11,42 @@ import {ModemService} from '../../../services/modem.service';
   styleUrls: ['./modems-create.component.css']
 })
 export class ModemsCreateComponent implements OnInit {
+  form: FormGroup;
 
+  submitted: boolean;
 
-  modem: Modem = {
-    number: '',
-    brand: '',
-    category: {name: '', id: 0},
-    id: 0,
-    model: '',
-    registrationNumber: '',
-    state: {id: 0, name: ''}
-  };
   categories: Category[];
 
-  constructor(private categoryService: CategoryService, private modemService: ModemService, private router: Router) {
+  constructor(private categoryService: CategoryService,
+              private modemService: ModemService,
+              private fb: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit() {
-  }
-
-  searchForCategories(event) {
-    let query = event.query;
     this.categoryService.getAll().then(categories => {
-      this.categories = this.filter(query, categories);
+      this.categories = categories;
     });
-  }
 
+    this.form = this.fb.group({
+      'brand': new FormControl('', Validators.required),
+      'registrationNumber': new FormControl('', Validators.required),
+      'model': new FormControl('', Validators.required),
+      'number': new FormControl('', Validators.required),
+      'category': new FormControl('', Validators.required),
+    });
 
-  filter(query, items): any[] {
-    let filtered: any[] = [];
-    let item: any;
-    for (let i = 0; i < items.length; i++) {
-      item = items[i];
-      if (item.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(item);
-      }
-    }
-    return filtered;
+    this.submitted = false;
   }
 
   save() {
+    this.submitted = true;
 
-    console.log(this.modem);
-    this.modemService.save(this.modem).then(data => {
+    this.modemService.save(this.form.getRawValue()).then(data => {
       this.router.navigateByUrl('/admin/modems');
     }, error => {
       console.log(error);
     });
   }
-
 
 }

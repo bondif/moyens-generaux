@@ -36,7 +36,6 @@ import {EquipmentsIndexComponent} from './components/equipments/equipments-index
 import {FixPhonesCreateComponent} from './components/fix-phones/fix-phones-create/fix-phones-create.component';
 import {ModemsCreateComponent} from './components/modems/modems-create/modems-create.component';
 import {SimCardsCreateComponent} from './components/sim-cards/sim-cards-create/sim-cards-create.component';
-import {ToolsIndexComponent} from './components/tools/tools-index/tools-index.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {FurnituresIndexComponent} from './components/furnitures/furnitures-index/furnitures-index.component';
 import {FurnituresEditComponent} from './components/furnitures/furnitures-edit/furnitures-edit.component';
@@ -202,10 +201,6 @@ const routes: Routes = [
     component: SimCardsEditComponent
   },
   {
-    path: 'admin/tools',
-    component: ToolsIndexComponent
-  },
-  {
     path: 'user/update-password',
     component: ChangePasswordComponent
   },
@@ -246,7 +241,6 @@ const routes: Routes = [
     FixPhonesCreateComponent,
     ModemsCreateComponent,
     SimCardsCreateComponent,
-    ToolsIndexComponent,
     FurnituresIndexComponent,
     FurnituresEditComponent,
     FurnituresCreateComponent,
@@ -283,7 +277,6 @@ const routes: Routes = [
     ConfirmDialogModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
     CalendarModule
   ],
   providers: [ConfirmationService],
