@@ -58,6 +58,9 @@ import {ChangePasswordComponent} from './components/login/change-password/change
 import {CalendarModule} from 'primeng/calendar';
 import {RequestIndexComponent} from './components/request/request-index/request-index.component';
 import {RequestEditComponent} from './components/request/request-edit/request-edit.component';
+import { FuelCardsIndexComponent } from './components/fuel-cards/fuel-cards-index/fuel-cards-index.component';
+import { FuelCardsCreateComponent } from './components/fuel-cards/fuel-cards-create/fuel-cards-create.component';
+import { FuelCardsEditComponent } from './components/fuel-cards/fuel-cards-edit/fuel-cards-edit.component';
 
 const routes: Routes = [
   {
@@ -71,6 +74,18 @@ const routes: Routes = [
   {
     path: 'admin/furnitures/:id/edit',
     component: FurnituresEditComponent
+  },
+  {
+    path: 'admin/fuel-cards',
+    component: FuelCardsIndexComponent
+  },
+  {
+    path: 'admin/fuel-cards/create',
+    component: FuelCardsCreateComponent
+  },
+  {
+    path: 'admin/fuel-cards/:id/edit',
+    component: FuelCardsEditComponent
   },
   {
     path: 'admin/vehicles',
@@ -259,6 +274,9 @@ const routes: Routes = [
     ChangePasswordComponent,
     RequestIndexComponent,
     RequestEditComponent,
+    FuelCardsIndexComponent,
+    FuelCardsCreateComponent,
+    FuelCardsEditComponent,
   ],
   imports: [
     BrowserModule,

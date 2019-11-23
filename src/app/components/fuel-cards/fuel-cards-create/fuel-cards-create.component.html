@@ -24,17 +24,6 @@
     </div>
 
     <div class="ui-grid-row">
-      <div class="ui-grid-col-2">Modèle</div>
-      <div class="ui-grid-col-6">
-        <input id="model" type="text" formControlName="model" pInputText>
-      </div>
-      <div class="ui-grid-col-4">
-        <p-message severity="error" text="Ce champ est requis"
-                   *ngIf="!form.controls['model'].valid&&form.controls['model'].dirty"></p-message>
-      </div>
-    </div>
-
-    <div class="ui-grid-row">
       <div class="ui-grid-col-2">Ceiling</div>
       <div class="ui-grid-col-6">
         <input id="ceiling" type="text" formControlName="ceiling" pInputText>
@@ -42,17 +31,6 @@
       <div class="ui-grid-col-4">
         <p-message severity="error" text="Ce champ est requis"
                    *ngIf="!form.controls['ceiling'].valid&&form.controls['ceiling'].dirty"></p-message>
-      </div>
-    </div>
-
-    <div class="ui-grid-row">
-      <div class="ui-grid-col-2">Numéro</div>
-      <div class="ui-grid-col-6">
-        <input id="number" type="text" formControlName="number" pInputText>
-      </div>
-      <div class="ui-grid-col-4">
-        <p-message severity="error" text="Ce champ est requis"
-                   *ngIf="!form.controls['number'].valid&&form.controls['number'].dirty"></p-message>
       </div>
     </div>
 
