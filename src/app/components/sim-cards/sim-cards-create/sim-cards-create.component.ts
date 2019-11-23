@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Category} from '../../../entities/Category';
-import {SimCard} from '../../../entities/SimCard';
 import {CategoryService} from '../../../services/category.service';
 import {SimCardService} from '../../../services/sim-card.service';
 import {Router} from '@angular/router';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-sim-cards-create',
@@ -11,50 +11,40 @@ import {Router} from '@angular/router';
   styleUrls: ['./sim-cards-create.component.css']
 })
 export class SimCardsCreateComponent implements OnInit {
+  form: FormGroup;
 
-  simCard: SimCard = {
-    callsCeiling: '',
-    internetCeiling: '',
-    brand: '',
-    category: {name: '', id: 0},
-    id: 0,
-    phoneNumber: '',
-    registrationNumber: '',
-    state: {id: 0, name: ''}
-  };
+  submitted: boolean;
+
   categories: Category[];
 
-  constructor(private categoryService: CategoryService, private simCardService: SimCardService, private router: Router) {
+  constructor(private categoryService: CategoryService,
+              private simCardService: SimCardService,
+              private fb: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit() {
-  }
-
-  searchForCategories(event) {
-    let query = event.query;
     this.categoryService.getAll().then(categories => {
-      this.categories = this.filter(query, categories);
+      this.categories = categories;
     });
-  }
 
+    this.form = this.fb.group({
+      'brand': new FormControl('', Validators.required),
+      'registrationNumber': new FormControl('', Validators.required),
+      'phoneNumber': new FormControl('', Validators.required),
+      'callsCeiling': new FormControl('', Validators.required),
+      'internetCeiling': new FormControl('', Validators.required),
+      'category': new FormControl('', Validators.required),
+    });
 
-  filter(query, items): any[] {
-    let filtered: any[] = [];
-    let item: any;
-    for (let i = 0; i < items.length; i++) {
-      item = items[i];
-      if (item.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(item);
-      }
-    }
-    return filtered;
+    this.submitted = false;
   }
 
   save() {
+    this.submitted = true;
 
-    console.log(this.simCard);
-    this.simCardService.save(this.simCard).then(data => {
-      this.router.navigateByUrl('/admin/sim-card');
+    this.simCardService.save(this.form.getRawValue()).then(data => {
+      this.router.navigateByUrl('/admin/sim-cards');
     }, error => {
       console.log(error);
     });
