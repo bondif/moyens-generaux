@@ -9,6 +9,10 @@ export abstract class GenericService<Entity> {
   protected constructor(protected http: HttpClient, protected BASE_URL: string) {
   }
 
+  setBASE_URL(url: string) {
+    this.BASE_URL=url;
+  }
+
   token: any = 'Bearer ' + this.auth.currentUserValue();
   headers = {headers: {'Authorization': this.token}};
 
