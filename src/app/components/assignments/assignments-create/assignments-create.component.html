@@ -1,0 +1,112 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-7">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-12" style="text-align: right;">{{request.requestDate | date:'dd/MM/yyyy, HH:mm' }}</div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">Nom complet:</div>
+        <div class="ui-grid-col-10">
+          {{request.employee.firstName + " " + request.employee.lastName}}
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">Fonction:</div>
+        <div class="ui-grid-col-9">
+          {{request.employee.function.name}}
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">Departement:</div>
+        <div class="ui-grid-col-9">
+          {{request.employee.department.name}}
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">Category:</div>
+        <div class="ui-grid-col-9">
+          {{request.category.name}}
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">Pour:</div>
+        <div class="ui-grid-col-9">
+          {{request.startDate | date:'dd/MM/yyyy, HH:mm' }}
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">Jusqu'à:</div>
+        <div class="ui-grid-col-9">
+          {{request.endDate | date:'dd/MM/yyyy, HH:mm' }}
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">Raison:</div>
+        <div class="ui-grid-col-9">
+          {{request.reason}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<form [formGroup]="form" (ngSubmit)="create()">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+    <div formGroupName="request">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">Accepter:</div>
+        <div class="ui-grid-col-1">
+          <p-radioButton name="isAccepted" (onFocus)="change(1)" value="1" label="oui"
+                         formControlName="isAccepted"></p-radioButton>
+        </div>
+        <div class="ui-grid-col-1">
+          <p-radioButton name="isAccepted" (onFocus)="change(0)" value="0" label="non"
+                         formControlName="isAccepted"></p-radioButton>
+        </div>
+        <div class="ui-grid-col-8">
+          <p-message severity="error" text="Ce champ est requis"
+                     *ngIf="!form.controls['request'].valid&&form.controls['request'].dirty"></p-message>
+        </div>
+      </div>
+      <div class="ui-grid-row" *ngIf="displayComment">
+        <div class="ui-grid-col-2">Description</div>
+        <div class="ui-grid-col-6">
+          <textarea id="comment" name="comment" pInputTextarea formControlName="comment" style="width: 100%"></textarea>
+        </div>
+        <div class="ui-grid-col-4">
+          <p-message severity="error" text="Ce champ est requis"
+                     *ngIf="!form.controls['request'].valid&&form.controls['request'].dirty"></p-message>
+        </div>
+      </div>
+    </div>
+    <div class="ui-grid-row" *ngIf="displayTools">
+      <div class="ui-grid-col-2">Tool</div>
+      <div class="ui-grid-col-6">
+        <p-dropdown id="tools" placeholder="Choisir un outil" optionLabel="label"
+                    [options]="tools"
+                    formControlName="tool" >
+          <ng-template let-item pTemplate="selectedItem">
+            <span style="vertical-align:middle">{{item.label}}</span>
+          </ng-template>
+          <ng-template let-tool pTemplate="item">
+            <div class="ui-helper-clearfix" style="position: relative;height:25px;">
+              <div style="font-size:14px;float:left;margin-top:4px">{{tool.label}}</div> </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['tool'].valid&&form.controls['tool'].dirty"></p-message>
+      </div>
+    </div>
+  </div>
+  <div class="ui-grid-row mt-4">
+    <div class="ui-grid-col-8">
+      <button pButton type="submit" label="Enregistrer" class="ui-button-raised ml-2"
+              [disabled]="!form.valid"></button>
+    </div>
+  </div>
+
+</form>
+
