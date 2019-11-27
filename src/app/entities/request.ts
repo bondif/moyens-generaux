@@ -12,5 +12,6 @@ export interface Request {
   startDate: Date;
   endDate: Date;
   requestDate:Date;
+  reason:string;
 }
 
