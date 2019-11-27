@@ -59,6 +59,10 @@ import {ChangePasswordComponent} from './components/login/change-password/change
 import {CalendarModule} from 'primeng/calendar';
 import {RequestIndexComponent} from './components/request/request-index/request-index.component';
 import {RequestEditComponent} from './components/request/request-edit/request-edit.component';
+import {RequestsComponent} from './components/assignments/requests/requests.component';
+import {AssignmentsCreateComponent} from './components/assignments/assignments-create/assignments-create.component';
+import {AssignmentsIndexComponent} from './components/assignments/assignments-index/assignments-index.component';
+import {RadioButtonModule} from 'primeng/primeng';
 
 const routes: Routes = [
   {
@@ -202,8 +206,20 @@ const routes: Routes = [
     component: SimCardsEditComponent
   },
   {
+    path: 'admin/assignments/:id/create',
+    component: AssignmentsCreateComponent
+  },
+  {
+    path: 'admin/assignments',
+    component: AssignmentsIndexComponent
+  },
+  {
     path: 'admin/tools',
     component: ToolsIndexComponent
+  },
+  {
+    path: 'admin/requests',
+    component: RequestsComponent
   },
   {
     path: 'user/update-password',
@@ -265,6 +281,9 @@ const routes: Routes = [
     ChangePasswordComponent,
     RequestIndexComponent,
     RequestEditComponent,
+    RequestsComponent,
+    AssignmentsCreateComponent,
+    AssignmentsIndexComponent,
   ],
   imports: [
     BrowserModule,
@@ -284,7 +303,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    CalendarModule
+    CalendarModule,
+    RadioButtonModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]
