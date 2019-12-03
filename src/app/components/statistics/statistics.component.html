@@ -1,17 +1,19 @@
 <div class="row">
   <div class="col-md-4">
     <p-card header="Nombre d'outils">
-      {{ statistics?.toolsCount }}
+      <span class="stat-val">{{ statistics?.toolsCount }}</span>
     </p-card>
   </div>
   <div class="col-md-4">
     <p-card header="Nombre d'employés">
-      {{ statistics?.usersCount }}
+      <span class="stat-val">{{ statistics?.usersCount }}</span>
     </p-card>
   </div>
   <div class="col-md-4">
     <p-card header="Demandes non traités">
-      {{ statistics?.noneEvaluatedRequestsCount }}
+      <span class="stat-val">{{ statistics?.noneEvaluatedRequestsCount }}</span>
     </p-card>
   </div>
 </div>
+
+<app-categories-not-available></app-categories-not-available>

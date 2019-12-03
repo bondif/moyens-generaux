@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../../../services/category.service';
+import {Category} from '../../../entities/Category';
 
 @Component({
   selector: 'app-categories-not-available',
@@ -7,7 +8,7 @@ import {CategoryService} from '../../../services/category.service';
   styleUrls: ['./categories-not-available.component.css']
 })
 export class CategoriesNotAvailableComponent implements OnInit {
-  categories: any;
+  categories: Category[];
 
   constructor(private categoryService:CategoryService) { }
 
@@ -49,12 +50,7 @@ export class CategoriesNotAvailableComponent implements OnInit {
     });
   }
   getCategories() {
-    let categories = [];
-    for(let category of this.categories) {
-      category.name = category.name.toString();
-      categories.push(category);
-    }
-    return categories;
+    return this.categories.map(c => c.name);
   }
 
 }

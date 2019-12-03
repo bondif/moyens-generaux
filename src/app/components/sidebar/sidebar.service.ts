@@ -15,7 +15,7 @@ export class SidebarService {
       id: 1,
       title: 'Tableau de bord',
       icon: 'pi pi-palette',
-      link: "/",
+      link: "/admin",
       active: false,
       type: 'simple',
     },
