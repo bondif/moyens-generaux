@@ -1,20 +1,20 @@
+<button pButton type="button" label="Ajouter" class="ui-button-raised ui-button-success mb-2"
+        (click)="create()"></button>
+
+
 <p-table [value]="requests">
   <ng-template pTemplate="header">
     <tr>
-      <th>#</th>
       <th>fait le</th>
       <th>Categorie</th>
       <th>date de debut</th>
       <th>date de fin</th>
       <th>Etat</th>
-      <th>tool</th>
-      <th>Editer</th>
-      <th>Supprimer</th>
+      <th style="width: 300px">Actions</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-request>
     <tr>
-      <td>{{request.id}} </td>
       <td>{{request.requestDate | date:'dd/MM/yyyy, HH:mm' }} </td>
       <td>{{request.category.name}}
       </td>
@@ -24,18 +24,26 @@
       <td *ngIf="request.isAccepted==0"> refuser</td>
       <td *ngIf="request.isAccepted==1">accepter</td>
       <td *ngIf="request.assignment!=null">{{request.assignment?.tool.brand}}</td>
-      <td *ngIf="request.assignment==null">**</td>
       <td>
-        <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning"
-                (click)="edit(request.id)">
-        </button>
-        <button pButton type="button" label="Details" class="ui-button-raised ui-button-success"
-                (click)="edit(request.id)"></button>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4">
+            <button pButton type="button" label="Details" class="ui-button-raised ui-button-success"
+                    (click)="edit(request.id)"></button>
+          </div>
+          <div *ngIf="request.isAccepted==-1">
+            <div class="ui-grid-col-4">
+              <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning"
+                      (click)="edit(request.id)">
+              </button>
+            </div>
+            <div class="ui-grid-col-4">
+              <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger"
+                      (click)="delete(request.id)"></button>
+            </div>
+        </div>
+        </div>
       </td>
-      <td>
-        <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger"
-                (click)="delete(request.id)"></button>
-      </td>
+
     </tr>
   </ng-template>
 </p-table>

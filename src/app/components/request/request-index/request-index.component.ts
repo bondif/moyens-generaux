@@ -54,4 +54,8 @@ export class RequestIndexComponent implements OnInit {
     this.currentPage = event.page;
     this.loadData();
   }
+
+  create() {
+    this.router.navigateByUrl('user/requests/create');
+  }
 }
