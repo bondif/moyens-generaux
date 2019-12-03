@@ -12,4 +12,13 @@ export class CategoryService extends GenericService<Category> {
     super(http, 'http://localhost:8080/api/admin/categories');
   }
 
+  getNotAvailable() {
+    return this.http.get(this.BASE_URL+'/not-available', this.headers)
+      .toPromise()
+      .then(res => <Category[]> res)
+      .then(data => {
+        return data;
+      });
+  }
+
 }
