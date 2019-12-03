@@ -79,7 +79,7 @@ export class EmployeesEditComponent implements OnInit {
   update() {
     this.submitted = true;
 
-    this.employeeService.save(this.form.getRawValue()).then(data => {
+    this.employeeService.update(this.form.getRawValue(), this.employee.id).then(data => {
       this.router.navigateByUrl('/admin/employees');
     }, err => console.log(err.message));
   }

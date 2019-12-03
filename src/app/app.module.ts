@@ -36,7 +36,6 @@ import {EquipmentsIndexComponent} from './components/equipments/equipments-index
 import {FixPhonesCreateComponent} from './components/fix-phones/fix-phones-create/fix-phones-create.component';
 import {ModemsCreateComponent} from './components/modems/modems-create/modems-create.component';
 import {SimCardsCreateComponent} from './components/sim-cards/sim-cards-create/sim-cards-create.component';
-import {ToolsIndexComponent} from './components/tools/tools-index/tools-index.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {FurnituresIndexComponent} from './components/furnitures/furnitures-index/furnitures-index.component';
 import {FurnituresEditComponent} from './components/furnitures/furnitures-edit/furnitures-edit.component';
@@ -63,6 +62,12 @@ import {RequestsComponent} from './components/assignments/requests/requests.comp
 import {AssignmentsCreateComponent} from './components/assignments/assignments-create/assignments-create.component';
 import {AssignmentsIndexComponent} from './components/assignments/assignments-index/assignments-index.component';
 import {RadioButtonModule} from 'primeng/primeng';
+import { FuelCardsIndexComponent } from './components/fuel-cards/fuel-cards-index/fuel-cards-index.component';
+import { FuelCardsCreateComponent } from './components/fuel-cards/fuel-cards-create/fuel-cards-create.component';
+import { FuelCardsEditComponent } from './components/fuel-cards/fuel-cards-edit/fuel-cards-edit.component';
+import { EmployeeHistoryComponent } from './components/employees/employee-history/employee-history.component';
+import { ToolHistoryComponent } from './components/toos/tool-history/tool-history.component';
+import { CategoriesNotAvailableComponent } from './components/categories/categories-not-available/categories-not-available.component';
 
 const routes: Routes = [
   {
@@ -76,6 +81,18 @@ const routes: Routes = [
   {
     path: 'admin/furnitures/:id/edit',
     component: FurnituresEditComponent
+  },
+  {
+    path: 'admin/fuel-cards',
+    component: FuelCardsIndexComponent
+  },
+  {
+    path: 'admin/fuel-cards/create',
+    component: FuelCardsCreateComponent
+  },
+  {
+    path: 'admin/fuel-cards/:id/edit',
+    component: FuelCardsEditComponent
   },
   {
     path: 'admin/vehicles',
@@ -96,6 +113,10 @@ const routes: Routes = [
   {
     path: 'admin/categories/create',
     component: CategoriesCreateComponent
+  },
+  {
+    path: 'admin/categories/not-available',
+    component: CategoriesNotAvailableComponent
   },
   {
     path: 'admin/categories/:id/edit',
@@ -136,6 +157,14 @@ const routes: Routes = [
   {
     path: 'admin/employees/:id/edit',
     component: EmployeesEditComponent
+  },
+  {
+    path: 'admin/employees/:id/assignments',
+    component: EmployeeHistoryComponent
+  },
+  {
+    path: 'admin/tool/:id/assignments',
+    component: ToolHistoryComponent
   },
   {
     path: 'admin/equipments',
@@ -214,10 +243,6 @@ const routes: Routes = [
     component: AssignmentsIndexComponent
   },
   {
-    path: 'admin/tools',
-    component: ToolsIndexComponent
-  },
-  {
     path: 'admin/requests',
     component: RequestsComponent
   },
@@ -262,7 +287,6 @@ const routes: Routes = [
     FixPhonesCreateComponent,
     ModemsCreateComponent,
     SimCardsCreateComponent,
-    ToolsIndexComponent,
     FurnituresIndexComponent,
     FurnituresEditComponent,
     FurnituresCreateComponent,
@@ -284,6 +308,12 @@ const routes: Routes = [
     RequestsComponent,
     AssignmentsCreateComponent,
     AssignmentsIndexComponent,
+    FuelCardsIndexComponent,
+    FuelCardsCreateComponent,
+    FuelCardsEditComponent,
+    EmployeeHistoryComponent,
+    ToolHistoryComponent,
+    CategoriesNotAvailableComponent,
   ],
   imports: [
     BrowserModule,
@@ -304,7 +334,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     CalendarModule,
-    RadioButtonModule
+    RadioButtonModule,
+    CalendarModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

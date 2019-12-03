@@ -1,6 +1,17 @@
 <form [formGroup]="form" (ngSubmit)="update()">
   <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
     <div class="ui-grid-row">
+      <div class="ui-grid-col-2">Marque</div>
+      <div class="ui-grid-col-6">
+        <input id="brand" type="text" formControlName="brand" size="30" pInputText/>
+      </div>
+      <div class="ui-grid-col-4">
+        <p-message severity="error" text="Ce champ est requis"
+                   *ngIf="!form.controls['brand'].valid&&form.controls['brand'].dirty"></p-message>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
       <div class="ui-grid-col-2">Matricule</div>
       <div class="ui-grid-col-6">
         <input id="registrationNumber" type="text" formControlName="registrationNumber"
@@ -13,35 +24,13 @@
     </div>
 
     <div class="ui-grid-row">
-      <div class="ui-grid-col-2">Marque</div>
+      <div class="ui-grid-col-2">Ceiling</div>
       <div class="ui-grid-col-6">
-        <input id="brand" type="text" formControlName="brand" size="30" pInputText/>
+        <input id="ceiling" type="text" formControlName="ceiling" pInputText>
       </div>
       <div class="ui-grid-col-4">
         <p-message severity="error" text="Ce champ est requis"
-                   *ngIf="!form.controls['brand'].valid&&form.controls['brand'].dirty"></p-message>
-      </div>
-    </div>
-
-    <div class="ui-grid-row">
-      <div class="ui-grid-col-2">Modèle</div>
-      <div class="ui-grid-col-6">
-        <input id="model" type="text" formControlName="model" pInputText>
-      </div>
-      <div class="ui-grid-col-4">
-        <p-message severity="error" text="Ce champ est requis"
-                   *ngIf="!form.controls['model'].valid&&form.controls['model'].dirty"></p-message>
-      </div>
-    </div>
-
-    <div class="ui-grid-row">
-      <div class="ui-grid-col-2">Numéro</div>
-      <div class="ui-grid-col-6">
-        <input id="number" type="text" formControlName="number" pInputText>
-      </div>
-      <div class="ui-grid-col-4">
-        <p-message severity="error" text="Ce champ est requis"
-                   *ngIf="!form.controls['number'].valid&&form.controls['number'].dirty"></p-message>
+                   *ngIf="!form.controls['ceiling'].valid&&form.controls['ceiling'].dirty"></p-message>
       </div>
     </div>
 
@@ -70,6 +59,7 @@
                    *ngIf="!form.controls['state'].valid&&form.controls['state'].dirty"></p-message>
       </div>
     </div>
+
   </div>
 
   <div class="ui-grid-row mt-4">

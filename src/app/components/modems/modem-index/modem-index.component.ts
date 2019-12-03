@@ -1,13 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FixPhone} from '../../../entities/Fixphone';
-import {Category} from '../../../entities/Category';
-import {StateType} from '../../../entities/StateType';
-import {CategoryService} from '../../../services/category.service';
-import {StateTypeService} from '../../../services/state-type.service';
-import {FixPhoneService} from '../../../services/fix-phone.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {Modem} from '../../../entities/Modem';
 import {ModemService} from '../../../services/modem.service';
+import {ConfirmService} from '../../../services/confirm.service';
 
 @Component({
   selector: 'app-modem-index',
@@ -16,7 +11,6 @@ import {ModemService} from '../../../services/modem.service';
 })
 export class ModemIndexComponent implements OnInit {
 
-
   private modems: Modem[];
   data: any;
   size: number = 15;
@@ -24,7 +18,9 @@ export class ModemIndexComponent implements OnInit {
   totalPages: number;
   totalElements: number;
 
-  constructor(private modemService: ModemService, private router: Router) {
+  constructor(private modemService: ModemService,
+              private confirmService: ConfirmService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -37,7 +33,6 @@ export class ModemIndexComponent implements OnInit {
         this.modems = this.data.content;
         this.totalPages = this.data.totalPages;
         this.totalElements = this.data.totalElements;
-        console.log(this.data);
       },
       err => console.log(err.message));
   }
@@ -47,16 +42,18 @@ export class ModemIndexComponent implements OnInit {
   }
 
   delete(id) {
-    this.modemService.delete(id).then(
-      suceess => {
-        this.modems.forEach(e => {
-          if (e.id == id) {
-            let i = this.modems.indexOf(e);
-            this.modems.splice(i, 1);
-          }
-        });
-      }
-    );
+    this.confirmService.deleteConfirmation(() => {
+      this.modemService.delete(id).then(
+        success => {
+          this.modems.forEach(e => {
+            if (e.id == id) {
+              let i = this.modems.indexOf(e);
+              this.modems.splice(i, 1);
+            }
+          });
+        }
+      );
+    }, null);
   }
 
   paginate(event) {
@@ -64,8 +61,7 @@ export class ModemIndexComponent implements OnInit {
     this.loadData();
   }
 
-
-
-
-
+  create() {
+    this.router.navigateByUrl('/admin/modems/create');
+  }
 }

@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category} from '../../../entities/Category';
 import {CategoryService} from '../../../services/category.service';
-import {SimCardService} from '../../../services/sim-card.service';
 import {Router} from '@angular/router';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FuelCardService} from '../../../services/fuel-card.service';
 
 @Component({
-  selector: 'app-sim-cards-create',
-  templateUrl: './sim-cards-create.component.html',
-  styleUrls: ['./sim-cards-create.component.css']
+  selector: 'app-fuel-cards-create',
+  templateUrl: './fuel-cards-create.component.html',
+  styleUrls: ['./fuel-cards-create.component.css']
 })
-export class SimCardsCreateComponent implements OnInit {
+export class FuelCardsCreateComponent implements OnInit {
+
   form: FormGroup;
 
   submitted: boolean;
@@ -18,7 +19,7 @@ export class SimCardsCreateComponent implements OnInit {
   categories: Category[];
 
   constructor(private categoryService: CategoryService,
-              private simCardService: SimCardService,
+              private fuelCardService: FuelCardService,
               private fb: FormBuilder,
               private router: Router) {
   }
@@ -31,9 +32,7 @@ export class SimCardsCreateComponent implements OnInit {
     this.form = this.fb.group({
       'brand': new FormControl('', Validators.required),
       'registrationNumber': new FormControl('', Validators.required),
-      'phoneNumber': new FormControl('', Validators.required),
-      'callsCeiling': new FormControl('', Validators.required),
-      'internetCeiling': new FormControl('', Validators.required),
+      'ceiling': new FormControl('', Validators.required),
       'category': new FormControl('', Validators.required),
     });
 
@@ -43,11 +42,10 @@ export class SimCardsCreateComponent implements OnInit {
   save() {
     this.submitted = true;
 
-    this.simCardService.save(this.form.getRawValue()).then(data => {
-      this.router.navigateByUrl('/admin/sim-cards');
+    this.fuelCardService.save(this.form.getRawValue()).then(data => {
+      this.router.navigateByUrl('/admin/fuel-cards');
     }, error => {
       console.log(error);
     });
   }
-
 }

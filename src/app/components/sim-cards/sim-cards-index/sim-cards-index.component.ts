@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SimCard} from '../../../entities/SimCard';
 import {SimCardService} from '../../../services/sim-card.service';
 import {Router} from '@angular/router';
+import {ConfirmService} from '../../../services/confirm.service';
 
 @Component({
   selector: 'app-sim-cards-index',
@@ -17,7 +18,9 @@ export class SimCardsIndexComponent implements OnInit {
   totalPages: number;
   totalElements: number;
 
-  constructor(private simCardService: SimCardService, private router: Router) {
+  constructor(private simCardService: SimCardService,
+              private confirmService: ConfirmService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -40,16 +43,18 @@ export class SimCardsIndexComponent implements OnInit {
   }
 
   delete(id) {
-    this.simCardService.delete(id).then(
-      suceess => {
-        this.simCards.forEach(e => {
-          if (e.id == id) {
-            let i = this.simCards.indexOf(e);
-            this.simCards.splice(i, 1);
-          }
-        });
-      }
-    );
+    this.confirmService.deleteConfirmation(() => {
+      this.simCardService.delete(id).then(
+        success => {
+          this.simCards.forEach(e => {
+            if (e.id == id) {
+              let i = this.simCards.indexOf(e);
+              this.simCards.splice(i, 1);
+            }
+          });
+        }
+      );
+    }, null);
   }
 
   paginate(event) {
@@ -57,5 +62,7 @@ export class SimCardsIndexComponent implements OnInit {
     this.loadData();
   }
 
-
+  create() {
+    this.router.navigateByUrl('/admin/sim-cards/create');
+  }
 }

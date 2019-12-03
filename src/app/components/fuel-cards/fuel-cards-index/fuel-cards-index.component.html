@@ -3,15 +3,14 @@
 <button pButton type="button" label="Ajouter" class="ui-button-raised ui-button-success mb-2"
         (click)="create()"></button>
 
-<p-table [value]="modems">
+<p-table [value]="fuelCards">
   <ng-template pTemplate="header">
     <tr>
       <th style="width: 3em">#</th>
       <th>Matricule</th>
       <th>Marque</th>
-      <th>Modèle</th>
-      <th>Numéro</th>
-      <th>Categorie</th>
+      <th>Plafond</th>
+      <th>Catégorie</th>
       <th>Situation</th>
       <th>Actions</th>
     </tr>
@@ -21,12 +20,9 @@
       <td>{{item.id }} </td>
       <td>{{item.registrationNumber}}</td>
       <td>{{item.brand}}</td>
-      <td>{{item.model}}</td>
-      <td>{{item.number}}</td>
+      <td>{{item.ceiling}}</td>
       <td>{{item.category?.name}}</td>
       <td>{{item.state.name}}</td>
-
-
       <td>
         <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning mr-1"
                 (click)="edit(item.id)"></button>
@@ -36,6 +32,5 @@
     </tr>
   </ng-template>
 </p-table>
-
 
 <p-paginator [rows]="size" [totalRecords]="totalElements" (onPageChange)="paginate($event)"></p-paginator>
