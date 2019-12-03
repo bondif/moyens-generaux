@@ -1,5 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
+import {Assignment} from '../entities/assignment';
 
 
 export abstract class GenericService<Entity> {
@@ -25,6 +26,14 @@ export abstract class GenericService<Entity> {
       });
   }
 
+  assignmentsHistory(id,page, size) {
+    return this.http.get(this.BASE_URL+'/' +id+ '/assignments?page=' + page + '&size=' + size, this.headers)
+      .toPromise()
+      .then(res => <Assignment[]> res)
+      .then(data => {
+        return data;
+      });
+  }
   getPage(page, size) {
     return this.http.get(this.BASE_URL + '?page=' + page + '&size=' + size, this.headers)
       .toPromise()
