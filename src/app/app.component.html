@@ -1,13 +1,12 @@
-<app-navbar></app-navbar>
-
 <div class="container-fluid">
+  <app-navbar></app-navbar>
   <div class="row">
-    <nav class="col-md-2 col-lg-2 d-none d-md-block sidebar">
-      <app-sidebar></app-sidebar>
-    </nav>
+    <app-sidebar style="margin-top: 40px"></app-sidebar>
+
+    <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4"
+          style="padding-top: 50px; padding-left: 150px !important;">
+      <app-container></app-container>
+    </main>
   </div>
 </div>
 
-<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4" style="padding-top: 50px; padding-left: 150px !important;">
-  <app-container></app-container>
-</main>

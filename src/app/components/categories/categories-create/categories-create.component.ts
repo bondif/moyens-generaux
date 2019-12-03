@@ -3,6 +3,7 @@ import {CategoryService} from '../../../services/category.service';
 import {Router} from '@angular/router';
 import {Category} from '../../../entities/Category';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {SidebarService} from '../../sidebar/sidebar.service';
 
 @Component({
   selector: 'app-categories-create',
@@ -16,7 +17,9 @@ export class CategoriesCreateComponent implements OnInit {
 
   constructor(private categoryService: CategoryService,
               private fb: FormBuilder,
+              private sidebarService: SidebarService,
               private router: Router) {
+    sidebarService.setAsActive(4);
   }
 
   ngOnInit() {

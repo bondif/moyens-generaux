@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Modem} from '../../../entities/Modem';
 import {ModemService} from '../../../services/modem.service';
 import {ConfirmService} from '../../../services/confirm.service';
+import {SidebarService} from '../../sidebar/sidebar.service';
 
 @Component({
   selector: 'app-modem-index',
@@ -20,7 +21,9 @@ export class ModemIndexComponent implements OnInit {
 
   constructor(private modemService: ModemService,
               private confirmService: ConfirmService,
+              private sidebarService: SidebarService,
               private router: Router) {
+    sidebarService.setAsActive(2);
   }
 
   ngOnInit() {

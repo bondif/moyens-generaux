@@ -62,6 +62,15 @@ import { FuelCardsIndexComponent } from './components/fuel-cards/fuel-cards-inde
 import { FuelCardsCreateComponent } from './components/fuel-cards/fuel-cards-create/fuel-cards-create.component';
 import { FuelCardsEditComponent } from './components/fuel-cards/fuel-cards-edit/fuel-cards-edit.component';
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import {BsDropdownModule} from 'ngx-bootstrap';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
 const routes: Routes = [
   {
     path: 'admin/furnitures',
@@ -295,9 +304,17 @@ const routes: Routes = [
     ConfirmDialogModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    CalendarModule
+    CalendarModule,
+    BsDropdownModule.forRoot(),
+    PerfectScrollbarModule
   ],
-  providers: [ConfirmationService],
+  providers: [
+    ConfirmationService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
