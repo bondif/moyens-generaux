@@ -13,6 +13,8 @@ export class FunctionsIndexComponent implements OnInit {
 
   functions: Function[];
 
+  displayError: boolean = false;
+
   constructor(private functionService: FunctionService,
               private confirmService: ConfirmService,
               private router: Router) {
@@ -37,7 +39,9 @@ export class FunctionsIndexComponent implements OnInit {
             }
           });
         }
-      );
+      ).catch(e => {
+        this.displayError = true;
+      });
     }, null);
   }
 

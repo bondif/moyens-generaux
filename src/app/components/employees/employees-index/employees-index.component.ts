@@ -15,6 +15,7 @@ export class EmployeesIndexComponent implements OnInit {
   currentPage: number = 0;
   totalPages: number;
   totalElements: number;
+  displayError: boolean = false;
 
   constructor(private employeeService: EmployeeService,
               private confirmService: ConfirmService,
@@ -52,7 +53,9 @@ export class EmployeesIndexComponent implements OnInit {
               }
             });
           }
-        )
+        ).catch(e => {
+          this.displayError = true;
+        })
       }, null
     );
   }

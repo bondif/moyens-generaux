@@ -13,6 +13,7 @@ import {SidebarService} from '../../sidebar/sidebar.service';
 export class CategoriesIndexComponent implements OnInit {
 
   categories: Category[];
+  displayError: boolean = false;
 
   constructor(private categoryService: CategoryService,
               private confirmService: ConfirmService,
@@ -41,7 +42,10 @@ export class CategoriesIndexComponent implements OnInit {
               }
             });
           }
-        )}
+        ).catch(e => {
+          this.displayError = true;
+        })
+      }
       , null);
   }
 

@@ -1,3 +1,10 @@
+<p-dialog header="Suppression annulée" [(visible)]="displayError" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
+  <p>Impossible de supprimer cette département car elle contient des employés!</p>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="displayError=false" label="Ok"></button>
+  </p-footer>
+</p-dialog>
+
 <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
 
 <button pButton type="button" label="Ajouter" class="ui-button-raised ui-button-success mb-2"

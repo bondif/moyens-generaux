@@ -61,7 +61,7 @@ import {RequestEditComponent} from './components/request/request-edit/request-ed
 import {RequestsComponent} from './components/assignments/requests/requests.component';
 import {AssignmentsCreateComponent} from './components/assignments/assignments-create/assignments-create.component';
 import {AssignmentsIndexComponent} from './components/assignments/assignments-index/assignments-index.component';
-import {RadioButtonModule} from 'primeng/primeng';
+import {DialogModule, RadioButtonModule} from 'primeng/primeng';
 import {FuelCardsIndexComponent} from './components/fuel-cards/fuel-cards-index/fuel-cards-index.component';
 import {FuelCardsCreateComponent} from './components/fuel-cards/fuel-cards-create/fuel-cards-create.component';
 import {FuelCardsEditComponent} from './components/fuel-cards/fuel-cards-edit/fuel-cards-edit.component';
@@ -349,6 +349,7 @@ const routes: Routes = [
     RadioButtonModule,
     CalendarModule,
     CardModule,
+    DialogModule,
     BsDropdownModule.forRoot(),
     PerfectScrollbarModule
   ],

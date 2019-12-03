@@ -18,6 +18,8 @@ export class DepartmentsIndexComponent implements OnInit {
 
   departments: Department[];
 
+  displayError: boolean = false;
+
   ngOnInit() {
     this.departmentService.getAll().then(departments => this.departments = departments, err => console.log(err.message));
   }
@@ -28,16 +30,18 @@ export class DepartmentsIndexComponent implements OnInit {
 
   delete(id) {
     this.confirmService.deleteConfirmation(() =>
-    this.departmentService.delete(id).then(
-      success => {
-        this.departments.forEach(e => {
-          if (e.id == id) {
-            let i = this.departments.indexOf(e);
-            this.departments.splice(i, 1);
-          }
-        });
-      }
-    ), null);
+      this.departmentService.delete(id).then(
+        success => {
+          this.departments.forEach(e => {
+            if (e.id == id) {
+              let i = this.departments.indexOf(e);
+              this.departments.splice(i, 1);
+            }
+          });
+        }
+      ).catch(e => {
+        this.displayError = true;
+      }), null);
   }
 
   create() {
