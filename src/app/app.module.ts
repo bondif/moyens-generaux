@@ -66,6 +66,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import {BsDropdownModule} from 'ngx-bootstrap';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import {CardModule} from 'primeng/card';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -235,6 +237,10 @@ const routes: Routes = [
   {
     path: 'user/forgot-password',
     component: ForgotPasswordComponent
+  },
+  {
+    path: 'admin',
+    component: StatisticsComponent
   }
 ];
 
@@ -286,6 +292,7 @@ const routes: Routes = [
     FuelCardsIndexComponent,
     FuelCardsCreateComponent,
     FuelCardsEditComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -305,6 +312,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     CalendarModule,
+    CardModule,
     BsDropdownModule.forRoot(),
     PerfectScrollbarModule
   ],
