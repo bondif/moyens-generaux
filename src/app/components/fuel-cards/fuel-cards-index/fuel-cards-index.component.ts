@@ -26,6 +26,10 @@ export class FuelCardsIndexComponent implements OnInit {
     this.loadData();
   }
 
+  showHistory(id: any) {
+    this.router.navigateByUrl('/admin/tool/' + id + '/assignments');
+  }
+
   private loadData() {
     this.fuelCardService.getPage(this.currentPage, this.size).then(fuelCards => {
         this.data = fuelCards;

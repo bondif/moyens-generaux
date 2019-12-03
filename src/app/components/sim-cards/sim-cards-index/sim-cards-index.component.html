@@ -29,6 +29,8 @@
       <td>{{item.state.name}}</td>
 
       <td>
+        <button pButton type="button" label="Historique" class="ui-button-raised ui-button-success"
+                (click)="showHistory(item.id)"></button>
         <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning mr-1"
                 (click)="edit(item.id)"></button>
         <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger"
