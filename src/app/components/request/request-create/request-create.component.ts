@@ -13,6 +13,7 @@ import {RequestService} from '../../../services/request.service';
 export class RequestCreateComponent implements OnInit {
   sysDate: Date = new Date();
   request: Request = {
+    reason: "",
     assignment: undefined,
     category: {id: 0, name: ''},
     comment: '',

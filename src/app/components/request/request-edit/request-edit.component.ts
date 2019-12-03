@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class RequestEditComponent implements OnInit {
   request: Request = {
+    reason: "",
     assignment: undefined,
     category: {id: 0, name: ''},
     comment: '',

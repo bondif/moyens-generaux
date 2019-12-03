@@ -37,6 +37,9 @@ export class FurnituresIndexComponent implements OnInit {
       },
       err => console.log(err.message));
   }
+  showHistory(id: any) {
+    this.router.navigateByUrl('/admin/tool/'+id+'/assignments');
+  }
 
   edit(id) {
     this.router.navigateByUrl('/admin/furnitures/' + id + '/edit');

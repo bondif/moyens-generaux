@@ -24,6 +24,9 @@
       <td>{{furniture.model}}</td>
       <td>{{furniture.state ? furniture.state.name : "-"}}</td>
       <td>
+
+        <button pButton type="button" label="Historique" class="ui-button-raised ui-button-success"
+                (click)="showHistory(furniture.id)"></button>
         <button pButton type="button" label="Editer" class="ui-button-raised ui-button-warning"
                 (click)="edit(furniture.id)"></button>
         <button pButton type="button" label="Supprimer" class="ui-button-raised ui-button-danger"

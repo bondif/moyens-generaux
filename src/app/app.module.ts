@@ -58,15 +58,20 @@ import {ChangePasswordComponent} from './components/login/change-password/change
 import {CalendarModule} from 'primeng/calendar';
 import {RequestIndexComponent} from './components/request/request-index/request-index.component';
 import {RequestEditComponent} from './components/request/request-edit/request-edit.component';
-import { FuelCardsIndexComponent } from './components/fuel-cards/fuel-cards-index/fuel-cards-index.component';
-import { FuelCardsCreateComponent } from './components/fuel-cards/fuel-cards-create/fuel-cards-create.component';
-import { FuelCardsEditComponent } from './components/fuel-cards/fuel-cards-edit/fuel-cards-edit.component';
+import {RequestsComponent} from './components/assignments/requests/requests.component';
+import {AssignmentsCreateComponent} from './components/assignments/assignments-create/assignments-create.component';
+import {AssignmentsIndexComponent} from './components/assignments/assignments-index/assignments-index.component';
+import {RadioButtonModule} from 'primeng/primeng';
+import {FuelCardsIndexComponent} from './components/fuel-cards/fuel-cards-index/fuel-cards-index.component';
+import {FuelCardsCreateComponent} from './components/fuel-cards/fuel-cards-create/fuel-cards-create.component';
+import {FuelCardsEditComponent} from './components/fuel-cards/fuel-cards-edit/fuel-cards-edit.component';
+import {EmployeeHistoryComponent} from './components/employees/employee-history/employee-history.component';
+import {ToolHistoryComponent} from './components/toos/tool-history/tool-history.component';
+import {CategoriesNotAvailableComponent} from './components/categories/categories-not-available/categories-not-available.component';
 
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {BsDropdownModule} from 'ngx-bootstrap';
-import { StatisticsComponent } from './components/statistics/statistics.component';
+import {StatisticsComponent} from './components/statistics/statistics.component';
 import {CardModule} from 'primeng/card';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -119,6 +124,10 @@ const routes: Routes = [
     component: CategoriesCreateComponent
   },
   {
+    path: 'admin/categories/not-available',
+    component: CategoriesNotAvailableComponent
+  },
+  {
     path: 'admin/categories/:id/edit',
     component: CategoriesEditComponent
   },
@@ -157,6 +166,14 @@ const routes: Routes = [
   {
     path: 'admin/employees/:id/edit',
     component: EmployeesEditComponent
+  },
+  {
+    path: 'admin/employees/:id/assignments',
+    component: EmployeeHistoryComponent
+  },
+  {
+    path: 'admin/tool/:id/assignments',
+    component: ToolHistoryComponent
   },
   {
     path: 'admin/equipments',
@@ -227,6 +244,18 @@ const routes: Routes = [
     component: SimCardsEditComponent
   },
   {
+    path: 'admin/assignments/:id/create',
+    component: AssignmentsCreateComponent
+  },
+  {
+    path: 'admin/assignments',
+    component: AssignmentsIndexComponent
+  },
+  {
+    path: 'admin/requests',
+    component: RequestsComponent
+  },
+  {
     path: 'user/update-password',
     component: ChangePasswordComponent
   },
@@ -289,10 +318,16 @@ const routes: Routes = [
     ChangePasswordComponent,
     RequestIndexComponent,
     RequestEditComponent,
+    RequestsComponent,
+    AssignmentsCreateComponent,
+    AssignmentsIndexComponent,
     FuelCardsIndexComponent,
     FuelCardsCreateComponent,
     FuelCardsEditComponent,
     StatisticsComponent,
+    EmployeeHistoryComponent,
+    ToolHistoryComponent,
+    CategoriesNotAvailableComponent,
   ],
   imports: [
     BrowserModule,
@@ -311,6 +346,7 @@ const routes: Routes = [
     ConfirmDialogModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
+    RadioButtonModule,
     CalendarModule,
     CardModule,
     BsDropdownModule.forRoot(),

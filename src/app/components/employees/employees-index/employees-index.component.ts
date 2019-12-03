@@ -11,7 +11,7 @@ import {ConfirmService} from '../../../services/confirm.service';
 export class EmployeesIndexComponent implements OnInit {
   employees: any;
   data: any;
-  size: number = 15;
+  size: number = 8;
   currentPage: number = 0;
   totalPages: number;
   totalElements: number;
@@ -64,5 +64,9 @@ export class EmployeesIndexComponent implements OnInit {
 
   create() {
     this.router.navigateByUrl('/admin/employees/create');
+  }
+
+  showHistory(id: number) {
+    this.router.navigateByUrl('/admin/employees/'+id+'/assignments');
   }
 }

@@ -26,7 +26,9 @@ export class FixPhonesIndexComponent implements OnInit {
   ngOnInit() {
     this.loadData();
   }
-
+  showHistory(id: any) {
+    this.router.navigateByUrl('/admin/tool/'+id+'/assignments');
+  }
   loadData() {
     this.fixPhoneService.getPage(this.currentPage, this.size).then(fixPhones => {
         this.data = fixPhones;

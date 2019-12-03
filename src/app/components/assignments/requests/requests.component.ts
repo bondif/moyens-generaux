@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {RequestService} from '../../../services/request.service';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-request-index',
-  templateUrl: './request-index.component.html',
-  styleUrls: ['./request-index.component.css']
+  selector: 'app-requists',
+  templateUrl: './requests.component.html',
+  styleUrls: ['./requests.component.css']
 })
-export class RequestIndexComponent implements OnInit {
+export class RequestsComponent implements OnInit {
   requests: any;
   data: any;
   size: number = 10;
@@ -19,6 +19,7 @@ export class RequestIndexComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.requestService.setBASE_URL('http://localhost:8080/api/admin/requests');
     this.loadData();
   }
 
@@ -33,21 +34,8 @@ export class RequestIndexComponent implements OnInit {
       err => console.log(err.message));
   }
 
-  edit(id) {
-    this.router.navigateByUrl('user/requests/' + id + '/edit');
-  }
-
-  delete(id) {
-    this.requestService.delete(id).then(
-      success => {
-        this.requests.forEach(e => {
-          if (e.id == id) {
-            let i = this.requests.indexOf(e);
-            this.requests.splice(i, 1);
-          }
-        });
-      }
-    );
+  trait(id) {
+    this.router.navigateByUrl('admin/assignments/' + id + '/create');
   }
 
   paginate(event) {
@@ -55,7 +43,4 @@ export class RequestIndexComponent implements OnInit {
     this.loadData();
   }
 
-  create() {
-    this.router.navigateByUrl('user/requests/create');
-  }
 }

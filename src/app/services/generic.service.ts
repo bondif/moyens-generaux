@@ -1,5 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
+import {Assignment} from '../entities/assignment';
 
 
 export abstract class GenericService<Entity> {
@@ -7,6 +8,10 @@ export abstract class GenericService<Entity> {
   protected auth: AuthenticationService = new AuthenticationService();
 
   protected constructor(protected http: HttpClient, protected BASE_URL: string) {
+  }
+
+  setBASE_URL(url: string) {
+    this.BASE_URL=url;
   }
 
   token: any = 'Bearer ' + this.auth.currentUserValue();
@@ -21,6 +26,14 @@ export abstract class GenericService<Entity> {
       });
   }
 
+  assignmentsHistory(id,page, size) {
+    return this.http.get(this.BASE_URL+'/' +id+ '/assignments?page=' + page + '&size=' + size, this.headers)
+      .toPromise()
+      .then(res => <Assignment[]> res)
+      .then(data => {
+        return data;
+      });
+  }
   getPage(page, size) {
     return this.http.get(this.BASE_URL + '?page=' + page + '&size=' + size, this.headers)
       .toPromise()

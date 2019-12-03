@@ -30,6 +30,10 @@ export class ModemIndexComponent implements OnInit {
     this.loadData();
   }
 
+  showHistory(id: any) {
+    this.router.navigateByUrl('/admin/tool/' + id + '/assignments');
+  }
+
   loadData() {
     this.modemService.getPage(this.currentPage, this.size).then(data => {
         this.data = data;

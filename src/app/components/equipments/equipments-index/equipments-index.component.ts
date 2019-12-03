@@ -63,4 +63,8 @@ export class EquipmentsIndexComponent implements OnInit {
   create() {
     this.router.navigateByUrl('/admin/equipments/create');
   }
+
+  showHistory(id: any) {
+    this.router.navigateByUrl('/admin/tool/'+id+'/assignments');
+  }
 }

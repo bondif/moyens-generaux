@@ -42,6 +42,10 @@ export class SimCardsIndexComponent implements OnInit {
     this.router.navigateByUrl('/admin/sim-cards/' + id + '/edit');
   }
 
+  showHistory(id: any) {
+    this.router.navigateByUrl('/admin/tool/' + id + '/assignments');
+  }
+
   delete(id) {
     this.confirmService.deleteConfirmation(() => {
       this.simCardService.delete(id).then(
