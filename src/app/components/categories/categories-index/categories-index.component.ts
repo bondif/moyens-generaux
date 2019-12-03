@@ -3,6 +3,7 @@ import {CategoryService} from '../../../services/category.service';
 import {Category} from '../../../entities/Category';
 import {Router} from '@angular/router';
 import {ConfirmService} from '../../../services/confirm.service';
+import {SidebarService} from '../../sidebar/sidebar.service';
 
 @Component({
   selector: 'categories-app-index',
@@ -15,7 +16,9 @@ export class CategoriesIndexComponent implements OnInit {
 
   constructor(private categoryService: CategoryService,
               private confirmService: ConfirmService,
+              private sidebarService: SidebarService,
               private router: Router) {
+    sidebarService.setAsActive(4);
   }
 
   ngOnInit() {

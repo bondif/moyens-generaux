@@ -62,12 +62,21 @@ import {RequestsComponent} from './components/assignments/requests/requests.comp
 import {AssignmentsCreateComponent} from './components/assignments/assignments-create/assignments-create.component';
 import {AssignmentsIndexComponent} from './components/assignments/assignments-index/assignments-index.component';
 import {RadioButtonModule} from 'primeng/primeng';
-import { FuelCardsIndexComponent } from './components/fuel-cards/fuel-cards-index/fuel-cards-index.component';
-import { FuelCardsCreateComponent } from './components/fuel-cards/fuel-cards-create/fuel-cards-create.component';
-import { FuelCardsEditComponent } from './components/fuel-cards/fuel-cards-edit/fuel-cards-edit.component';
-import { EmployeeHistoryComponent } from './components/employees/employee-history/employee-history.component';
-import { ToolHistoryComponent } from './components/toos/tool-history/tool-history.component';
-import { CategoriesNotAvailableComponent } from './components/categories/categories-not-available/categories-not-available.component';
+import {FuelCardsIndexComponent} from './components/fuel-cards/fuel-cards-index/fuel-cards-index.component';
+import {FuelCardsCreateComponent} from './components/fuel-cards/fuel-cards-create/fuel-cards-create.component';
+import {FuelCardsEditComponent} from './components/fuel-cards/fuel-cards-edit/fuel-cards-edit.component';
+import {EmployeeHistoryComponent} from './components/employees/employee-history/employee-history.component';
+import {ToolHistoryComponent} from './components/toos/tool-history/tool-history.component';
+import {CategoriesNotAvailableComponent} from './components/categories/categories-not-available/categories-not-available.component';
+
+import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import {BsDropdownModule} from 'ngx-bootstrap';
+import {StatisticsComponent} from './components/statistics/statistics.component';
+import {CardModule} from 'primeng/card';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 const routes: Routes = [
   {
@@ -257,6 +266,10 @@ const routes: Routes = [
   {
     path: 'user/forgot-password',
     component: ForgotPasswordComponent
+  },
+  {
+    path: 'admin',
+    component: StatisticsComponent
   }
 ];
 
@@ -311,6 +324,7 @@ const routes: Routes = [
     FuelCardsIndexComponent,
     FuelCardsCreateComponent,
     FuelCardsEditComponent,
+    StatisticsComponent,
     EmployeeHistoryComponent,
     ToolHistoryComponent,
     CategoriesNotAvailableComponent,
@@ -332,12 +346,19 @@ const routes: Routes = [
     ConfirmDialogModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
-    CalendarModule,
     RadioButtonModule,
-    CalendarModule
+    CalendarModule,
+    CardModule,
+    BsDropdownModule.forRoot(),
+    PerfectScrollbarModule
   ],
-  providers: [ConfirmationService],
+  providers: [
+    ConfirmationService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

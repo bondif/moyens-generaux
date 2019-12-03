@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Category} from '../../../entities/Category';
 import {CategoryService} from '../../../services/category.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {SidebarService} from '../../sidebar/sidebar.service';
 
 @Component({
   selector: 'app-categories-edit',
@@ -23,7 +24,9 @@ export class CategoriesEditComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder,
+              private sidebarService: SidebarService,
               private categoryService: CategoryService) {
+    sidebarService.setAsActive(4);
   }
 
   ngOnInit() {
