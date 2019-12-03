@@ -32,7 +32,7 @@ export class AuthenticationService {
           this.route.navigateByUrl('/admin');
         }
       });
-      this.route.navigateByUrl('/user');
+      this.route.navigateByUrl('/user/requests');
     });
 
   }
