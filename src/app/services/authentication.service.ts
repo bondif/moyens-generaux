@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<any>;
+  private currentUserRole: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
   constructor(private http: HttpClient, private route: Router) {
@@ -18,6 +19,9 @@ export class AuthenticationService {
   currentUserValue(): any {
     return this.currentUserSubject.value;
   }
+  isAdmin(): boolean {
+    return localStorage.getItem('Role')==="admin"?true:false;
+  }
 
   login(username: string, password: string) {
     console.log('username=' + username);
@@ -27,12 +31,14 @@ export class AuthenticationService {
 
       console.log(jwt_decode(resp.headers.get('Authorization')).roles);
       localStorage.setItem('currentUser', JSON.stringify(resp.headers.get('Authorization')));
+      let role = 'user';
       jwt_decode(resp.headers.get('Authorization')).roles.forEach(roles => {
-        if (roles == 'ADMIN') {
-          this.route.navigateByUrl('/admin');
+        if (roles === 'ADMIN') {
+          role = 'admin';
         }
       });
-      this.route.navigateByUrl('/user/requests');
+      localStorage.setItem("Role",role)
+      role === 'admin' ? this.route.navigateByUrl('/admin') : this.route.navigateByUrl('/user/requests');
     });
 
   }
