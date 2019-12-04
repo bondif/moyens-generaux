@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class SidebarService {
   toggled = false;
   _hasBackgroundImage = false;
+
   menus = [
     {
       title: 'Générale',
@@ -15,7 +17,7 @@ export class SidebarService {
       id: 1,
       title: 'Tableau de bord',
       icon: 'pi pi-palette',
-      link: "/admin",
+      link: "admin",
       active: false,
       type: 'simple',
     },
@@ -94,8 +96,39 @@ export class SidebarService {
         },
       ]
     },
+    {
+      id: 5,
+      title: 'Changer mot de passe',
+      icon: 'pi pi-cog',
+      link: "user/update-password",
+      active: false,
+      type: 'simple',
+    },
   ];
-  constructor() { }
+
+  userMenus = [
+    {
+      title: 'Générale',
+      type: 'header'
+    },
+    {
+      id: 1,
+      title: 'Tableau de bord',
+      icon: 'pi pi-palette',
+      link: "admin",
+      active: false,
+      type: 'simple',
+    },
+    {
+      id: 2,
+      title: 'Affectations',
+      icon: 'pi pi-tags',
+      active: false,
+      type: 'simple'
+    },
+  ];
+
+  constructor(private auth: AuthenticationService) { }
 
   toggle() {
     this.toggled = ! this.toggled;
@@ -110,6 +143,7 @@ export class SidebarService {
   }
 
   getMenuList() {
+    // return this.auth.isAdmin() ? this.menus : this.userMenus;
     return this.menus;
   }
 
