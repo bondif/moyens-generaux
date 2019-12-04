@@ -20,7 +20,7 @@ export class ToolService {
         return data;
       });
   }
-  token: any = 'Bearer ' + this.auth.currentUserValue();
+  token: any = 'Bearer ' + this.auth.getToken();
   headers = {headers: {'Authorization': this.token}};
   getAvailable(categoryId, startDate:Date, endDate:Date) {
     return this.http.get(this.BASE_URL + "?categoryId="+categoryId+"&startDate="+startDate.getTime()+"&endDate="+endDate.getTime(),

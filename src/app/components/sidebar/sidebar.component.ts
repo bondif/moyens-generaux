@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { SidebarService } from './sidebar.service';
-// import { MenusService } from './menus.service';
+import {Component, OnInit} from '@angular/core';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {SidebarService} from './sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,14 +8,15 @@ import { SidebarService } from './sidebar.service';
   styleUrls: ['./sidebar.component.scss'],
   animations: [
     trigger('slide', [
-      state('up', style({ height: 0 })),
-      state('down', style({ height: '*' })),
+      state('up', style({height: 0})),
+      state('down', style({height: '*'})),
       transition('up <=> down', animate(200))
     ])
   ]
 })
 export class SidebarComponent implements OnInit {
   menus = [];
+
   constructor(public sidebarservice: SidebarService) {
     this.menus = sidebarservice.getMenuList();
   }

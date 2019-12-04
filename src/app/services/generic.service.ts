@@ -14,7 +14,7 @@ export abstract class GenericService<Entity> {
     this.BASE_URL=url;
   }
 
-  token: any = 'Bearer ' + this.auth.currentUserValue();
+  token: any = 'Bearer ' + this.auth.getToken();
   headers = {headers: {'Authorization': this.token}};
 
   getAll() {

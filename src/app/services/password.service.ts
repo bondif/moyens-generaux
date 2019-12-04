@@ -11,7 +11,7 @@ export class PasswordService {
   constructor(private http: HttpClient, private auth: AuthenticationService) {
   }
 
-  token: any = 'Bearer ' + this.auth.currentUserValue();
+  token: any = 'Bearer ' + this.auth.getToken();
   headers = {headers: {'Authorization': this.token}};
   BASE_URL = 'http://localhost:8080/api/user';
 

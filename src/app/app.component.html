@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <app-navbar></app-navbar>
+  <app-navbar *ngIf="displaySidebar"></app-navbar>
   <div class="row">
-    <app-sidebar style="margin-top: 40px"></app-sidebar>
+    <app-sidebar style="margin-top: 40px" *ngIf="displaySidebar"></app-sidebar>
 
     <main role="main" class="offset-md-2 offset-lg-2 col-md-10 col-lg-10" style="margin-top: 50px">
       <app-container></app-container>

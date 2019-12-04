@@ -8,7 +8,7 @@ import {AuthenticationService} from './authentication.service';
 export class StatisticsService {
 
   URL: string = "http://localhost:8080/api/admin/statistics";
-  token: any = 'Bearer ' + this.auth.currentUserValue();
+  token: any = 'Bearer ' + this.auth.getToken();
   headers = {headers: {'Authorization': this.token}};
 
   constructor(private http: HttpClient,

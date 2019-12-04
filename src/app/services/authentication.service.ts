@@ -8,37 +8,41 @@ import {Router} from '@angular/router';
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<any>;
-  private currentUserRole: BehaviorSubject<any>;
   public currentUser: Observable<any>;
+  private token: string;
+  private role: string;
 
   constructor(private http: HttpClient, private route: Router) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+    this.token = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser'))).value;
+    this.role = new BehaviorSubject<any>(localStorage.getItem('Role')).value;
   }
 
-  currentUserValue(): any {
-    return this.currentUserSubject.value;
+  getToken() {
+    return this.token;
   }
+
+  getRole() {
+    return this.role;
+  }
+
   isAdmin(): boolean {
-    return localStorage.getItem('Role')==="admin"?true:false;
+    return this.role === 'admin';
   }
 
   login(username: string, password: string) {
-    console.log('username=' + username);
     return this.http.post<any>('http://localhost:8080/api/login',
       {username, password}, {observe: 'response'}).subscribe(resp => {
-      console.log(resp.headers.keys());
 
-      console.log(jwt_decode(resp.headers.get('Authorization')).roles);
+      this.token = resp.headers.get('Authorization');
       localStorage.setItem('currentUser', JSON.stringify(resp.headers.get('Authorization')));
-      let role = 'user';
+      this.role = 'user';
       jwt_decode(resp.headers.get('Authorization')).roles.forEach(roles => {
         if (roles === 'ADMIN') {
-          role = 'admin';
+          this.role = 'admin';
         }
       });
-      localStorage.setItem("Role",role)
-      role === 'admin' ? this.route.navigateByUrl('/admin') : this.route.navigateByUrl('/user/requests');
+      localStorage.setItem('Role', this.role);
+      this.role === 'admin' ? this.route.navigateByUrl('/admin') : this.route.navigateByUrl('/user/requests');
     });
 
   }

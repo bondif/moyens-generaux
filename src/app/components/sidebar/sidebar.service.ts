@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service';
+import {Location} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -128,7 +129,8 @@ export class SidebarService {
     },
   ];
 
-  constructor(private auth: AuthenticationService) { }
+  constructor(private auth: AuthenticationService,
+              private location: Location) { }
 
   toggle() {
     this.toggled = ! this.toggled;
@@ -143,8 +145,7 @@ export class SidebarService {
   }
 
   getMenuList() {
-    // return this.auth.isAdmin() ? this.menus : this.userMenus;
-    return this.menus;
+    return this.auth.isAdmin() ? this.menus : this.userMenus;
   }
 
   get hasBackgroundImage() {
