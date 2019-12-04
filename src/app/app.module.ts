@@ -229,7 +229,7 @@ const routes: Routes = [
     component: SimCardsCreateComponent
   },
   {
-    path: 'user/assignments',
+    path: 'user/',
     component: UserHistoryComponent
   },
   {
