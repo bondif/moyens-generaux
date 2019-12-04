@@ -1,0 +1,24 @@
+<p-table [value]="assignments">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>#</th>
+      <th>Categorie</th>
+      <th>tool</th>
+      <th>date de debut</th>
+      <th>date de fin</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-assignment>
+    <tr>
+      <td>{{assignment.id}} </td>
+      <td>{{assignment.request.category.name}} </td>
+      <td>{{assignment.tool.brand}} </td>
+      <td>{{assignment.request.startDate | date:'dd/MM/yyyy, HH:mm' }}</td>
+      <td>{{assignment.request.endDate | date:'dd/MM/yyyy, HH:mm' }}</td>
+
+    </tr>
+  </ng-template>
+</p-table>
+
+
+<p-paginator [rows]="size" [totalRecords]="totalElements" (onPageChange)="paginate($event)"></p-paginator>
