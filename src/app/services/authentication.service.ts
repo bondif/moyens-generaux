@@ -38,7 +38,7 @@ export class AuthenticationService {
         }
       });
       localStorage.setItem("Role",role)
-      role === 'admin' ? this.route.navigateByUrl('/admin') : this.route.navigateByUrl('/user/requests');
+      role === 'admin' ? this.route.navigateByUrl('/admin') : this.route.navigateByUrl('/user/');
     });
 
   }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ChangePasswordFormat} from '../../../entities/changePasswordFormat';
 import {PasswordService} from '../../../services/password.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,7 +17,7 @@ export class ResetPasswordComponent implements OnInit {
     confPass: ''
   };
 
-  constructor(private passwordService: PasswordService, private route: ActivatedRoute) {
+  constructor(private passwordService: PasswordService, private route: ActivatedRoute, private router:Router) {
   }
 
   ngOnInit() {
@@ -29,8 +29,11 @@ export class ResetPasswordComponent implements OnInit {
 
   save() {
     this.passwordService.resetPassword(this.changePasswordFormat).then(
-      data => console.log(data),
-      err => console.error(err)
+      data => {
+        console.log(data)
+        this.router.navigateByUrl("/login");
+      }
+      , err => console.error(err)
     );
   }
 }
