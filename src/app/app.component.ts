@@ -4,7 +4,6 @@ import {Event as NavigationEvent, NavigationStart, Router} from '@angular/router
 import {Location} from '@angular/common';
 import {SidebarService} from './components/sidebar/sidebar.service';
 import {filter} from 'rxjs/operators';
-import {log} from 'util';
 
 @Component({
   selector: 'app-root',
@@ -27,10 +26,10 @@ export class AppComponent implements OnInit {
           console.log(this.location.path());
           if (!this.authenticationService.getToken()) {
             this.displaySidebar = false;
-            console.log("sideabar : false");
+            console.log('sideabar : false');
           } else {
             this.displaySidebar = true;
-            console.log("sideabar : true");
+            console.log('sideabar : true');
           }
         }
       );

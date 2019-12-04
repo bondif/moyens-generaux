@@ -73,6 +73,7 @@ import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScroll
 import {BsDropdownModule} from 'ngx-bootstrap';
 import {StatisticsComponent} from './components/statistics/statistics.component';
 import {CardModule} from 'primeng/card';
+import { UserHistoryComponent } from './components/user-history/user-history.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -228,6 +229,10 @@ const routes: Routes = [
     component: SimCardsCreateComponent
   },
   {
+    path: 'user/',
+    component: UserHistoryComponent
+  },
+  {
     path: 'user/requests/create',
     component: RequestCreateComponent
   },
@@ -328,6 +333,7 @@ const routes: Routes = [
     EmployeeHistoryComponent,
     ToolHistoryComponent,
     CategoriesNotAvailableComponent,
+    UserHistoryComponent,
   ],
   imports: [
     BrowserModule,

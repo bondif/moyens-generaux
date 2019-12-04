@@ -56,10 +56,9 @@ export class RequestCreateComponent implements OnInit {
   }
 
   save() {
-    // this.request.requestDate=new Date();
     console.log(this.request);
     this.requestService.save(this.request).then(data => {
-      //this.router.navigateByUrl('/admin/requests');
+      this.router.navigateByUrl('/user/requests');
     }, error => {
       console.log(error);
     });
