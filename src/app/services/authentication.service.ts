@@ -42,7 +42,7 @@ export class AuthenticationService {
         }
       });
       localStorage.setItem('Role', this.role);
-      this.role === 'admin' ? this.route.navigateByUrl('/admin') : this.route.navigateByUrl('/user/');
+      this.role === 'admin' ? this.route.navigateByUrl('/admin') : this.route.navigateByUrl('/user');
     });
 
   }

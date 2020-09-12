@@ -4,6 +4,7 @@ import {CategoryService} from '../../../services/category.service';
 import {Router} from '@angular/router';
 import {Category} from '../../../entities/Category';
 import {RequestService} from '../../../services/request.service';
+import {UserCategoryService} from '../../../services/user-category.service';
 
 @Component({
   selector: 'app-request-create',
@@ -27,7 +28,7 @@ export class RequestCreateComponent implements OnInit {
   };
   categories: Category[];
 
-  constructor(private categoryService: CategoryService,
+  constructor(private categoryService: UserCategoryService,
               private router: Router,
               private requestService: RequestService) {
   }

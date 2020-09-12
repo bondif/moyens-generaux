@@ -5,6 +5,7 @@ import {Category} from '../../../entities/Category';
 import {CategoryService} from '../../../services/category.service';
 import {StateTypeService} from '../../../services/state-type.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UserCategoryService} from '../../../services/user-category.service';
 
 @Component({
   selector: 'app-request-edit',
@@ -29,7 +30,7 @@ export class RequestEditComponent implements OnInit {
   categories: Category[];
   sysDate: Date = new Date();
 
-  constructor(private categoryService: CategoryService,
+  constructor(private categoryService: UserCategoryService,
               private stateTypeService: StateTypeService,
               private router: Router,
               private requestService: RequestService,

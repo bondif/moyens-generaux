@@ -116,14 +116,15 @@ export class SidebarService {
       id: 1,
       title: 'Tableau de bord',
       icon: 'pi pi-palette',
-      link: "admin",
+      link: "user",
       active: false,
       type: 'simple',
     },
     {
       id: 2,
-      title: 'Affectations',
+      title: 'Demandes',
       icon: 'pi pi-tags',
+      link: "user/requests",
       active: false,
       type: 'simple'
     },

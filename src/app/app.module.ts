@@ -229,10 +229,6 @@ const routes: Routes = [
     component: SimCardsCreateComponent
   },
   {
-    path: 'user/',
-    component: UserHistoryComponent
-  },
-  {
     path: 'user/requests/create',
     component: RequestCreateComponent
   },
@@ -275,7 +271,11 @@ const routes: Routes = [
   {
     path: 'admin',
     component: StatisticsComponent
-  }
+  },
+  {
+    path: 'user',
+    component: UserHistoryComponent
+  },
 ];
 
 @NgModule({
