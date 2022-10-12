@@ -29,7 +29,7 @@
     "ngx-perfect-scrollbar": "^7.1.0",
     "popper.js": "^1.16.0",
     "file-saver": "^2.0.2",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.2.11",
     "jwt-decode": "^2.2.0",
     "primeicons": "^2.0.0",
